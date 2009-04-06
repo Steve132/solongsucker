@@ -2,6 +2,9 @@
 #define _IOMACROS
 
 #include "IOMgmt.h"
+#include <stdarg.h>
+
+#define TAG(word) #word ":"
 
 #define OPENTKN(classname) #classname "{"
 #define CLOSETKN(classname) "}" #classname
@@ -20,11 +23,21 @@ void classname::Extract(std::ifstream& fin)				\
 	std::string token;								\
 	fin >> token;									\
 	if(token != OPENTKN(classname)) 					\
-		throw IOMgmt::TokenError(std::string("Unrecognized open token, " + token + ", '" + OPENTKN(classname) + "' expected!"), std::string(std::string(#classname) + "::Extract()"));		\
+		throw IOMgmt::TokenError(std::string("Unrecognized open token, " + token + ", '" + OPENTKN(classname) + "' expected!"), std::string(std::string(#classname) + "::Extract()"));	\
 	Get(fin);										\
 	fin >> token;									\
 	if(token != CLOSETKN(classname))					\
 		throw IOMgmt::TokenError(std::string("Unrecognized close token, " + token + ", '" + CLOSETKN(classname) + "' expected!"), std::string(std::string(#classname) + "::Extract()"));	\
+}
+
+#define GET(classname)								\
+void classname::Get(std::ifstream& fin)					\
+{												\
+}
+
+#define PUT(classname)								\
+void classname::Put(std::ostream& fout)					\
+{												\
 }
 
 #define OUT_OPERATOR(classname)						\

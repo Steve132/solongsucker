@@ -11,15 +11,11 @@ Hand::~Hand()
 
 INSERT(Hand)
 
-void Hand::Put(std::ostream& fout)
-{
-}
+PUT(Hand)
 
 EXTRACT(Hand)
 
-void Hand::Get(std::ifstream& fin)
-{
-}
+GET(Hand)
 
 OUT_OPERATOR(Hand)
 
