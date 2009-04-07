@@ -9,6 +9,7 @@ class Hand : public std::multiset<Chip>
 {
 	public:
 		Hand();
+		Hand(const unsigned Size, const Chip chipId);
 		~Hand();
 
 		// To fulfill OODataDesign.doc
@@ -22,6 +23,10 @@ class Hand : public std::multiset<Chip>
 		// To fulfill OODataDesign.doc
 		virtual void Put(std::ostream& fout);
 		virtual void Get(std::ifstream& fin);
+	
+	private:
+		unsigned size;
+		Chip chip;
 };
 
 #endif

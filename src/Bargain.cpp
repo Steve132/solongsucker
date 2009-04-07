@@ -1,10 +1,10 @@
 #include "Bargain.h"
 
-Bargain::Bargain(int Handler, std::string Description) : SimMgmt::Message(Handler, Description)
+Bargain::Bargain(const int Handler, const std::string Description) : SimMgmt::Message(Handler, Description)
 {
 }
 
-Bargain::Bargain(int Handler, std::string Description, Move currentMove, std::multiset<Chip> Chips, Chip NextTurn) :
+Bargain::Bargain(const int Handler, const std::string Description, const Move currentMove, const std::multiset<Chip> Chips, const Chip NextTurn) :
 	SimMgmt::Message(Handler, Description), move(currentMove), chips(Chips), nextTurn(NextTurn)
 {
 }

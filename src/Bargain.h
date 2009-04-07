@@ -9,8 +9,8 @@
 class Bargain : public SimMgmt::Message
 {
 	public:
-		Bargain(int Handler, std::string Description);
-		Bargain(int Handler, std::string Description, Move currentMove, std::multiset<Chip> Chips, Chip NextTurn);
+		Bargain(const int Handler, const std::string Description);
+		Bargain(const int Handler, const std::string Description, const Move currentMove, const std::multiset<Chip> Chips, const Chip NextTurn);
 		~Bargain();
 
 		// To fulfill OODataDesign.doc
