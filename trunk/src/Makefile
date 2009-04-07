@@ -1,4 +1,4 @@
-OBJ=AppError.o Hand.o IOMgmt.o SimMgmt.o SoLongSuckerApp.o Stack.o
+OBJ=AppError.o Bargain.o Hand.o IOMgmt.o Move.o SimMgmt.o SoLongSuckerApp.o Stack.o
 
 all : SoLongSuckerApp
 
