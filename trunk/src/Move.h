@@ -3,7 +3,7 @@
 
 #include "Chip.h"
 #include "IOMacros.h"
-#include "Stack.h"
+#include "Pile.h"
 #include <iostream>
 #include <list>
 
@@ -11,7 +11,7 @@ class Move
 {
 	public:
 		Move();
-		Move(const std::list<Stack>::iterator pileIterator, const Chip chipId);
+		Move(const std::list<Pile>::iterator pileIterator, const Chip chipId);
 		~Move();
 
 		// To fulfill OODataDesign.doc
@@ -27,7 +27,7 @@ class Move
 		virtual void Put(std::ostream& fout);
 	
 	private:
-		std::list<Stack>::iterator pile;
+		std::list<Pile>::iterator pile;
 		Chip chip;
 };
 

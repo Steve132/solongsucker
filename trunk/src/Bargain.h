@@ -26,7 +26,7 @@ class Bargain : public SimMgmt::Message
 		virtual void Get(std::ifstream& fin);
 
 	private:
-	// "If _Move{(Player id)_ lays on _(Stack iterator)_}, give turn to _(Player id)_, and I'll offer _(chips)_.", if the Player suggesting Bargain is out of turn.
+	// "If _Move{(Player id)_ lays on _(Pile iterator)_}, give turn to _(Player id)_, and I'll offer _(chips)_.", if the Player suggesting Bargain is out of turn.
 	// "I'll _Move_, and give turn to _(Player id)_, and I want you to give me _(chips)_.", if the Player suggesting the Bargain is in turn.
 	// Thus nextTurn varies on whether the Player suggesting the Bargain is in or out of turn.
 		Move move;

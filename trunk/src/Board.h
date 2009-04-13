@@ -4,7 +4,7 @@
 #include "Chip.h"
 #include "Player.h"
 #include "SimMgmt.h"
-#include "Stack.h"
+#include "Pile.h"
 #include <set>
 
 class Board
@@ -34,7 +34,7 @@ class Board
 
 	private:
 		std::set<Player> players;
-		std::list<Stack> stacks;
+		std::list<Pile> stacks;
 };
 
 #endif

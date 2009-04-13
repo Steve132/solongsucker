@@ -5,7 +5,7 @@ Move::Move()
 {
 }
 
-Move::Move(const std::list<Stack>::iterator pileIterator, const Chip chipId)	:
+Move::Move(const std::list<Pile>::iterator pileIterator, const Chip chipId)	:
 	pile(pileIterator), chip(chipId)
 {
 }
