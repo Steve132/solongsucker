@@ -172,7 +172,7 @@ namespace IOMgmt {
 	{
 		if( fileName == "" ) throw IOError("OutMgr instance is not enabled! ", 
 			                               "OutMgr::pushMargin()");
-		if( ++idx >= MARGINSIZE ) throw IOError(string("Margin Stack Overflow!"),
+		if( ++idx >= MARGINSIZE ) throw IOError(string("Margin Pile Overflow!"),
 				                                string("OutMgr::pushMargin()"));
 		curpos = fout.tellp();
 		margin[idx] = curpos - lineorg;
@@ -182,7 +182,7 @@ namespace IOMgmt {
 	{
 		if( fileName == "" ) throw IOError("OutMgr instance is not enabled! ", 
 			                               "OutMgr::popMargin()");
-		if( idx < 0 ) throw IOError(string("Margin Stack Underflow!"),
+		if( idx < 0 ) throw IOError(string("Margin Pile Underflow!"),
 				                    string("OutMgr::popMargin()"));
         curpos = lineorg + margin[idx--];
 	}//popMargin

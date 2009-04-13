@@ -33,11 +33,11 @@ Bargain* Player::AcceptBargainReject()
 {
 }
 
-void Player::AcceptTurn()
+void Player::TakeTurn()
 {
 }
 
-SimMgmt::Message* Player::GiveTurn(std::list<Player> validPlayers)
+ChipMsg* Player::AcceptChipMsgGiveTurn(std::list<Player> validPlayers)
 {
 }
 

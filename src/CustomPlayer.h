@@ -24,8 +24,8 @@ class CustomPlayer : public Player
 		virtual Bargain* AcceptBargainReject();
 
 		// To fulfill OODataDesign.doc
-		friend std::ostream&  operator<<(std::ostream& fout, Stack& stack);
-		friend std::ifstream& operator>>(std::ifstream& fin, Stack& stack);
+		friend std::ostream&  operator<<(std::ostream& fout, Pile& stack);
+		friend std::ifstream& operator>>(std::ifstream& fin, Pile& stack);
 	
 		virtual void Extract(std::ifstream& fin);
 		virtual void Insert(std::ostream& fout);
