@@ -1,19 +1,19 @@
-#ifndef _STACK
-#define _STACK
+#ifndef _PILE
+#define _PILE
 
 #include "Chip.h"
 #include <deque>
 #include <iostream>
 
-class Stack : public std::deque<Chip>
+class Pile : public std::deque<Chip>
 {
 	public:
-		Stack();
-		~Stack();
+		Pile();
+		~Pile();
 
 		// To fulfill OODataDesign.doc
-		friend std::ostream&  operator<<(std::ostream& fout, Stack& stack);
-		friend std::ifstream& operator>>(std::ifstream& fin, Stack& stack);
+		friend std::ostream&  operator<<(std::ostream& fout, Pile& stack);
+		friend std::ifstream& operator>>(std::ifstream& fin, Pile& stack);
 	
 		virtual void Extract(std::ifstream& fin);
 		virtual void Insert(std::ostream& fout);
