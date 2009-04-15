@@ -24,13 +24,13 @@ class Board
 		friend ostream&  operator<<(ostream& fout, Bargain& bargain);
 		friend ifstream& operator>>(ifstream& fin, Bargain& bargain);
 	
-		virtual void Extract(std::ifstream& fin);
-		virtual void Insert(std::ostream& fout);
+		virtual void Extract() throw(IOMgmt::TokenError);
+		virtual void Insert();
 
 	protected:
 		// To fulfill OODataDesign.doc
-		virtual void Put(std::ostream& fout);
-		virtual void Get(std::ifstream& fin);
+		virtual void Put();
+		virtual void Get() throw(IOMgmt::TokenError);
 
 	private:
 		std::set<Player> players;

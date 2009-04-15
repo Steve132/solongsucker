@@ -1,4 +1,5 @@
 #include "CustomPlayer.h"
+#include "IOMacros.h"
 
 CustomPlayer::CustomPlayer()
 {

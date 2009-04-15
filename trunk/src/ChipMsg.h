@@ -15,13 +15,13 @@ class ChipMsg : public SimMgmt::Message
 		friend ostream&  operator<<(ostream& fout, ChipMsg& chipMsg);
 		friend ifstream& operator>>(ifstream& fin, ChipMsg& chipMsg);
 	
-		virtual void Extract(std::ifstream& fin);
-		virtual void Insert(std::ostream& fout);
+		virtual void Extract()  throw(IOMgmt::TokenError);
+		virtual void Insert();
 
 	protected:
 		// To fulfill OODataDesign.doc
-		virtual void Put(std::ostream& fout);
-		virtual void Get(std::ifstream& fin);
+		virtual void Put();
+		virtual void Get() throw(IOMgmt::TokenError);
 	
 	private:
 		Chip chip;

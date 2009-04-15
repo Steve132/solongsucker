@@ -2,31 +2,28 @@
 #define _HAND
 
 #include "Chip.h"
+#include "IOMgmt.h"
 #include <iostream>
 #include <set>
 
-class Hand : public std::multiset<Chip>
+class Hand : private std::multiset<Chip>
 {
 	public:
 		Hand();
 		Hand(const unsigned Size, const Chip chipId);
 		~Hand();
-
+		
 		// To fulfill OODataDesign.doc
 		friend std::ostream&  operator<<(std::ostream& fout, Hand& hand);
 		friend std::ifstream& operator>>(std::ifstream& fin, Hand& hand);
 
-		virtual void Extract(std::ifstream& fin);
-		virtual void Insert(std::ostream& fout);
+		virtual void Extract() throw(IOMgmt::TokenError);
+		virtual void Insert();
 
 	protected:
 		// To fulfill OODataDesign.doc
-		virtual void Put(std::ostream& fout);
-		virtual void Get(std::ifstream& fin);
-	
-	private:
-		unsigned size;
-		Chip chip;
+		virtual void Put();
+		virtual void Get() throw(IOMgmt::TokenError);
 };
 
 #endif
