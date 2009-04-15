@@ -5,11 +5,10 @@ Hand::Hand()
 {
 }
 
-Hand::Hand(const unsigned Size, const Chip chipId) :
-	size(Size), chip(chipId)
+Hand::Hand(const unsigned Size, const Chip chipId)
 {
-	for(unsigned i = 0; i < size; i++)
-		insert(chip);
+	for(unsigned i = 0; i < Size; i++)
+		insert(chipId);
 }
 
 Hand::~Hand()

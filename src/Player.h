@@ -31,13 +31,13 @@ class Player : public SimMgmt::Agent
 		friend std::ostream&  operator<<(std::ostream& fout, Pile& stack);
 		friend std::ifstream& operator>>(std::ifstream& fin, Pile& stack);
 	
-		virtual void Extract(std::ifstream& fin);
-		virtual void Insert(std::ostream& fout);
+		virtual void Extract() throw(IOMgmt::TokenError);
+		virtual void Insert();
 
 	protected:
 		// To fulfill OODataDesign.doc
-		virtual void Get(std::ifstream& fin);
-		virtual void Put(std::ostream& fout);
+		virtual void Get() throw(IOMgmt::TokenError);
+		virtual void Put();
 
 	private:
 		Hand hand;

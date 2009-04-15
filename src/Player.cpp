@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "IOMacros.h"
 
 Player::Player()
 {

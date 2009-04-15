@@ -1,11 +1,8 @@
 #include "Bargain.h"
+#include "IOMacros.h"
 
-Bargain::Bargain(const int Handler, const std::string Description) : SimMgmt::Message(Handler, Description)
-{
-}
-
-Bargain::Bargain(const int Handler, const std::string Description, const Move currentMove, const std::multiset<Chip> Chips, const Chip NextTurn) :
-	SimMgmt::Message(Handler, Description), move(currentMove), chips(Chips), nextTurn(NextTurn)
+Bargain::Bargain(const MoveProposal currentMoveProposal, const std::multiset<Chip> Chips, const Chip NextTurn) :
+	move(currentMoveProposal), chips(Chips), nextTurn(NextTurn)
 {
 }
 
