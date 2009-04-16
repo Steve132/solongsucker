@@ -26,7 +26,7 @@ namespace SimMgmt
 		simOutMgr.popMargin();
 	}
 	
-    void Message::Put()
+        void Message::Put()
 	{
 		ostream& fout = simOutMgr.getStream();
 
