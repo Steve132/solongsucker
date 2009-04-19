@@ -1,3 +1,47 @@
 Section 2.2
 The Virtual World Model
 Author: Andrew
+
+Rules of the game:
+
+Flow of the game-
+1) Assign each player a designated color.  Give each player 7 chips of their given color.
+2) Randomly decide which player will make the first move.  Play begins.
+3) Play continues until only one player remains.
+
+Winning/Losing-
+1) If it becomes a player's turn, and that player has no chips to play, that player is removed from the game.
+2) The last player who has not been removed from the game is declared the winner.
+
+Order of play(within a move)-
+1) A move is performed by placing a chip onto the table.  This involves either placing a chip on a pile (laying on) or creating a new pile (laying off).
+2) The move is then given to another player based on a number of options.
+	2b) If a player is defeated, the move goes to the player who just gave the defeated player the move and play continues.
+	2a) If a capture has just occurred, the player whose color made the capture must make the next move and play continues.
+	2c) If all players are represented in the stack, the move goes to the player whose most recently played chip is farthest down in that pile and play continues.
+	2d) Otherwise, the player with the current move can select any player whose chip is not in that pile.  If the current player lays off, any other player can be selected for the next move and play continues.
+
+Captures-
+1) A capture occurs when two consecutive chips of the same color are played on the same pile.
+2) The player making the capture takes all the chips in the pile.
+3) One of the chips in the pile must be killed.
+4) Play continues with the player whose color made the capture as listed in the rules for Order of Play.
+
+Bargaining.
+1) A bargain can occur at any time during the game.
+2) A bargain must be discussed openly at the playing table.
+3) A bargain can be accepted or denied at any time during the game.
+4) Any player can decide to not uphold the bargain without a penalty.
+
+The following diagram illustrates the virtual world for this game.  The use cases are all inside the virtual world, and the actors exist outside of the virtual world.
+
+(insert use case diagram)
+
+The dealer is an actor who deals each player their seven chips.  After this, the dealer does not perform any more actions and is not needed for the rest of the game.
+
+After the game begins, there are four different cases that can occur: make a bargain, transfer a prisoner, kill a chip, or make a move on the table.  Each player at the table can perform any of the first three cases at any time during the game.  This is illustrated by the association between the noncurrent player and bargaining, transfer prisoners, and kill chip.  Only one player at a time has the ability to move.  That is shown with the current player and its association with the case player moves, meaning that that player places a chip on the board.
+
+
+The activity diagram below provides an illustration of the general flow of the simulation from start to finish.  It provides more detail and breaks down each situation case by case.
+
+(insert activity diagram)
