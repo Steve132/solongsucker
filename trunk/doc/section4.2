@@ -1,0 +1,43 @@
+Section 4.2
+Package Specifications
+Author: Sarah
+---
+NOTE: Most of this is borrowed directly from SDS-GCKSS-Fall07-1.doc
+STEVE: Do a search for '<' to find any INSERT items for the document.
+---
+
+In this section we describe the purpose of each package in the architecture and identify the classes that participate in the design.  Figure <INSERT FIGURE NAME> presents a view inside each package exposing the classes contained within and some of the key associations and relationships among classes belonging to different packages.
+
+Package IOMgmt.  
+This package provides several classes for managing file streams.  The two primary classes used by the simulator are InMgr and OutMgr.  In addition, two exception classes are provided.  Class IOError is used exclusively by classes in IOMgmt for throwing exceptions when errors occur while attempting to perform stream operations (e.g. open(), append(), etc. ).  Class TokenError is provided to application clients of InMgr when trying to parse data from some input stream.  TokenError is thrown by all Extract() and Get() methods of classes in SimModels that must read instances from the input file stream when the virtual world is being constructed.
+
+<INSERT architecture_diagram.png>
+
+Package SimMgmt.
+This package encapsulates simulation infrastructure classes that do not depend on the particular virtual world being modeled.  It contains four reusable classes and three reusable simulation objects.  Class Agent is an abstract class that defines a set of methods that must be redefined in all active simulation objects.  As shown in Figure <INSERT refer to previous figure>, all active simulation objects (e.g., Player) must be derived subclasses of Agent.  Each of these classes must redefine methods defined in class Agent. 
+
+Class EventMgr encapsulates and manages the event queue.  A pre-defined instance of this class is called theEventMgr and is a member of this package.  EventMgr provides services such as PostEvent() and getNextEvent() for adding and removing instances, respectively, of class Event.
+Other services include MoreEvents() that determines whether or not the event queue is empty.  Finally, EventMgr provides services GetRecvr(), GetSendr(), GetMsg() and Clock() which provide the identity of the receiver agent, the sender agent, the message sent, and the simulation time of the last event removed from the queue.
+SimMgmt also holds two pre-defined objects for managing the simulation input and output streams.  SimInMgr manages the input file stream and simOutMgr manages the simulation log.  These objects are instance of classes IOMgmt::InMgr and IOMgmt::OutMgr, respectively.
+
+<INSERT SPACE TO INDICATE THAT FOLLOWS IS OUR CLASSES>
+Figure <INSERT next figure nubmer> gives a detailed view of the custom members of the system.  These classes would have to be changed or replaced to simulate a new virtual world or to enhance an existing simulator.
+
+<INSERT layered_architecture_diagram.png>
+
+Interface and Control Layer
+Class SoLongSucker defines and represents the "Simulated", or "Virtual World".  An instance of this class is the object to be simulated.  Note the composition relationship between World and the agent classes.  These are objects that SoLongSucker constructs from the input file stream.  Instances of other classes are created dynamically when Agents send messages to one another.  
+
+One of its methods of SoLongSucker, Simulate(), controls the simulation by removing Events from theEventMgr and dispatching the contained Message instance to the designated receiver Agent.  The receiving Agent decodes and acts on the message it receives – this may spawn the creation of new Events that are posted to theEventMgr.  This scenario repeats until all Events have been dispatched and the Event queue becomes empty.
+Agent Layer
+This layer consists of all active object classes or agents.  Active objects must be instances of some subclass of abstract class Agent.  The simulation progresses as a result of events created and serviced by agents.  All simulation time must be accounted for in the time delays associated with sending messages from one agent to another.  In other words, agents control the progress of the simulation and can only communicate with each other by sending messages through events.  There is one exception to this statement – a direct call must be made from a sending agent to a public message constructor provided by the receiving agent.  These calls are necessary as part of message passing mechanism and have no meaning in the virtual world.  
+
+An agent must call methods of passive classes directly but if such calls have meaning in the virtual world, then the associated simulation time must be accounted for in the time delay defined for the next message sent to another agent.  
+
+An Event has four components: a sender agent, a receiver agent, an instance of some message class, and an event time.   When one Agent wishes to interact with another, it must do so by creating an instance of Event that defines a "future" time at which the interaction will occur.   The message component defines an action to the receiver agent and possibly carries data necessary to complete the action.  The simulation time associated with the new event is computed by the sender and must include virtual world delays associated with any actions the sender may perform to cause the interaction with the receiver – this includes interactions between the sender and any passive objects. 
+
+Message Classes
+Messages contain two important data members, a message handler id or code, and, optionally, a passive data object that is needed by the message handler to execute the requested action.  Message instances are created by the receiver agent.  For each potential incoming message, the receiver agent class assigns an integer code that identifies the private message handler that will be called to service or act on the message when it is received during simulation.  Message handlers are called by the receiver’s Dispatch() method – the Dispatch() method uses the handler code to identify an internal private method that will act on the message and its data (if any).  Furthermore, as mentioned above, the receiver agent must provide a public message constructor method, for each message it can expect to receive from some other agent.  These message constructors may take passive data as parameters and create an appropriate instance of some message class.  The purpose of these message constructors is to allow the receiver to encode the handler id as part of the message so that it will know how to dispatch it when the corresponding interaction event occurs (in the future).  
+
+Passive Layer
+The passive layer contains all classes that model problem data and inanimate objects of the simulated world.  Agents make direct calls on passive objects, but must account for the simulation time consumed when doing so.  Passive objects may make direct calls to each other, if necessary.    Passive objects may be passed from one agent to another as part of a instance of some message.
