@@ -1,0 +1,161 @@
+Section 4.3
+Class Specifications
+Author: Sarah
+
+---
+NOTE that it is implied that WORKMAN ML be appended to each class description of methods.
+Also note that this does not include protocols, exceptions, or interaction tables, since we do not yet fully know what interactions will occur.
+---
+
+Name: Bargain
+Type: Entity
+Purpose: Bargain exists to provide a basis of communication between existing Players in the simulation.  A Player can offer a set of Chips in hopes of getting the next turn and requesting a move or the Player in turn could offer to perform a move and give the turn to a player, provided that they give them a certain number of Chips.
+Data Members: MoveProposal move, multiset<Chip> chips, Chip nextTurn
+Methods:	public Bargain()
+		public Bargain(MoveProposal move, multiset<Chip> chips, Chip nextTurn)
+		public ~Bargain()
+
+Name: BargainMsg
+Type: Boundary
+Purpose: BargainMsg exists to provide a method of the discrete simulator of So Long Sucker to inform players of Bargains to be passed between them.
+Data Members: int handler, string description, Bargain bargain
+Methods:	public BargainMsg(int handler, string description)
+		public BargainMsg(int handler, string description, Bargain& bargain)
+		public ~BargainMsg()
+
+Name: Board
+Type: Entity
+Purpose: Board exists as a container for Piles.
+Data Members: list<Pile> piles
+Methods:	public Board()
+		public ~Board()
+
+Name: Chip
+Type: Entity
+Purpose: Chip exists as both a Player identification color and as tokens for play in Piles.
+
+Name: ChipMsg
+Type: Boundary
+Purpose: ChipMsg exists to provide a method of the discrete simulator of So Long Sucker to inform Players when it is their next turn or to inform the Player in turn of the available Players to select for the next turn, according to rules.
+Data Members: int handler, string description, Chip chip
+Methods:	public ChipMsg(int handler, string description)
+		public ChipMsg(int handler, string description, Chip& chip)
+		public ~ChipMsg()
+
+Name: Hand
+Type: Entity
+Purpose: Hand is a container for Chips held by a Player.
+Methods:	public Hand()
+		public Hand(unsigned size, Chip chipId)
+		public ~Hand()
+
+Name: JacobJerk
+Type: Control
+Purpose: JacobJerk is a subclass of Player and provides a strategy by which to bargain during the simulation.
+Data Members: Hand hand, Chip chipId
+Methods:	public JacobJerk()
+		public JacobJerk(unsigned sizeOfHand, Chip chipId);
+		public ~JacobJerk()
+
+		public Initialize(Message* players)
+		public Dispatch(Message* msg)
+
+		public Bargain* AcceptBargainOffer();
+		public Bargain* AcceptBargainAccept();
+		public Bargain* AcceptBargainReject();
+
+		public void TakeTurn();
+		public ChipMsg* AcceptChipMsgGiveTurn(list<Player> validPlayers);
+
+Name: MoveProposal
+Type: Entity
+Purpose: MoveProposal acts a way to indicate what move the Player intends to take.
+Data Members: Chip chip, list<Pile>::iterator pile
+Methods:	public MoveProposal()
+		public MoveProposal(Chip chip, list<Pile>::iterator pile)
+		public ~MoveProposal()
+
+Name: RandyRandom
+Type: Control
+Purpose: RandyRandom is a subclass of Player and provides a strategy by which to bargain during the simulation.
+Data Members: Hand hand, Chip chipId
+Methods:	public RandyRandom()
+		public RandyRandom(unsigned sizeOfHand, Chip chipId);
+		public ~RandyRandom()
+
+		public Initialize(Message* players)
+		public Dispatch(Message* msg)
+
+		public Bargain* AcceptBargainOffer();
+		public Bargain* AcceptBargainAccept();
+		public Bargain* AcceptBargainReject();
+
+		public void TakeTurn();
+		public ChipMsg* AcceptChipMsgGiveTurn(list<Player> validPlayers);
+
+Name: Pile
+Type: Entity
+Purpose: Acts as an ordered container for Chips.
+Methods:	public Pile()
+		public ~Pile()
+
+Name: Player
+Type: Control
+Purpose: Player is a subclass of Agent and provides a main actor for play during the simulation.
+Data Members: Hand hand, Chip chipId
+Methods:	public Player()
+		public Player(unsigned sizeOfHand, Chip chipId);
+		public ~Player()
+
+		public Initialize(Message* players)
+		public Dispatch(Message* msg)
+
+		public Bargain* AcceptBargainOffer();
+		public Bargain* AcceptBargainAccept();
+		public Bargain* AcceptBargainReject();
+
+		public void TakeTurn();
+		public ChipMsg* AcceptChipMsgGiveTurn(list<Player> validPlayers);
+
+Name: PlayersMsg
+Type: Boundary
+Purpose: To inform a given Player of all other Players in the simulation.
+Data Members: int handler, string description, Player* players
+Methods:	public PlayersMsg(int handler, string description)
+		public PlayersMsg(int handler, string description, Player* players)
+		public ~PlayersMsg()
+
+Name: RandyRandom
+Type: Control
+Purpose: RandyRandom is a subclass of Player and provides a strategy by which to bargain during the simulation.
+Data Members: Hand hand, Chip chipId
+Methods:	public RandyRandom()
+		public RandyRandom(unsigned sizeOfHand, Chip chipId);
+		public ~RandyRandom()
+
+		public Initialize(Message* players)
+		public Dispatch(Message* msg)
+
+		public Bargain* AcceptBargainOffer();
+		public Bargain* AcceptBargainAccept();
+		public Bargain* AcceptBargainReject();
+
+		public void TakeTurn();
+		public ChipMsg* AcceptChipMsgGiveTurn(list<Player> validPlayers);
+
+Name: SoLongSucker
+Type: Control
+Purpose: SoLongSucker serves as the ground truth object for the simulation, starting and maintaining system and system log data.
+Data Members: Player* players, Board board
+Methods:	public SoLongSucker()
+		public ~SoLongSucker()
+
+		public void Initialize();
+		public void Simulate();
+		public void WrapUp();
+
+		public Message* AcceptChipsDiscard(multiset<Chip> chips);
+
+
+
+
