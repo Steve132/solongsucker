@@ -27,7 +27,7 @@ Captures-
 3) One of the chips in the pile must be killed.
 4) Play continues with the player whose color made the capture as listed in the rules for Order of Play.
 
-Bargaining.
+Bargaining-
 1) A bargain can occur at any time during the game.
 2) A bargain must be discussed openly at the playing table.
 3) A bargain can be accepted or denied at any time during the game.
@@ -35,24 +35,32 @@ Bargaining.
 
 The following diagram illustrates the virtual world for this game.  The use cases are all inside the virtual world, and the actors exist outside of the virtual world.
 
+
 (insert use case diagram)
 
-Use Cases:
-Bargaining-
-Transfer-
-Kill Chip-
-Move-
-
-The dealer is an actor who deals each player their seven chips.  After this, the dealer does not perform any more actions and is not needed for the rest of the game.
-
 After the game begins, there are four different cases that can occur: make a bargain, transfer a prisoner, kill a chip, or make a move on the table.  Each player at the table can perform any of the first three cases at any time during the game.  This is illustrated by the association between the noncurrent player and bargaining, transfer prisoners, and kill chip.  Only one player at a time has the ability to move.  That is shown with the current player and its association with the case player moves, meaning that that player places a chip on the board.
+
+Use Cases:
+Deal Chips-
+The process of dealing chips is done first before the game even begins.  The dealer performs the action of dealing 7 chips to each player.  After this, the player who is given the first move is selected at random.  This process of dealing chips to enable gameplay can be seen as initializing the game.  After initializing, no more chips are dealt and the dealer is no longer needed.
+
+Bargaining-
+The most important thing to remember in bargaining is that it can happen at any time during the game, and it can be between any two players.  The bargaining process leads to a player accepting or rejecting the offer made.  Then, if accepted, often leads to a transfer of chips between the two players.
+
+Transfer-
+A transfer of chips can occur at any time during the game between any two players, and it usually occurs after a bargain is made.
+
+Kill Chip-
+Either the current player and any other player can kill a chip at any time.  However, a player can only kill one of its own chips after a capture occurs.  In all other cases, each player is only allowed to kill a prisoner.
+
+Move-
+Only the current player is allowed to make a move.  The current player makes a move by either placing a chip on a pile or starting a new pile.  This can lead to any number of subsequent actions.  One action could be a capture, where two chips of the same color are placed on the top of the pile.  This would lead to a player taking the pile and killing a chip.  The current player would then give the move to the player whose color is represented by the chips that made the capture.  In other cases, such as starting a new pile, the current player can give the move to any player, including him/herself.  But, in all cases, the current player then gives the move to the next player.  That next player then becomes the current player.
+
+
 
 
 The activity diagram below provides an illustration of the general flow of the simulation from start to finish.  It provides more detail and breaks down each situation case by case.
 
 (insert activity diagram)
-
-To show how the activity diagram illustrates the flow of the game, let's walk through a step-by-step scenario of how the game would be played.  First, the dealer deals the chips, then play begins.  Every time a player is selected, the first thing to check for is if that player has any chips remaining.  If not, that player is removed from the game.  Otherwise, play continues as normal.  The first player will 
-
 
 
