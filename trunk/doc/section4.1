@@ -1,0 +1,21 @@
+Section 4.1
+Architectural Overview
+Author: Sarah
+---
+NOTE: This essentially serves as a desired format for inserting diagrams.
+STEVE: Do a search for '<' to find any INSERT items for the document.
+---
+
+Figure <INSERT number> is the dynamic model of the So Long Sucker System.
+<INSERT workman_system_process_flow_activity_diagram.png>
+
+Figure <INSERT number> shows the interactions between Player and other Players via SoLongSucker transmitting the three core Message types: BargainMsg, ChipMsg, and PlayersMsg.
+<INSERT agent_communication_diagram.png>
+BargainMsg exists to provide a method of the discrete simulator of So Long Sucker to inform players of Bargains to be passed between them.
+Data Members: int handler, string description, Bargain bargain
+
+ChipMsg exists to provide a method of the discrete simulator of So Long Sucker to inform Players when it is their next turn or to inform the Player in turn of the available Players to select for the next turn, according to rules.
+Data Members: int handler, string description, Chip chip
+
+PlayersMsg exists to inform a given Player of all other Players in the simulation.
+Data Members: int handler, string description, Player* players
