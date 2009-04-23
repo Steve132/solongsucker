@@ -6,25 +6,25 @@
 
 class BargainMsg : SimMgmt::Message
 {
-	public:
-		BargainMsg(int Handler, std::string Description);
-		BargainMsg(int Handler, std::string Description, const Bargain& bargainIn);
-		~BargainMsg();
+public:
+	BargainMsg(int Handler, std::string Description);
+	BargainMsg(int Handler, std::string Description, const Bargain& bargainIn);
+	~BargainMsg();
 
-		// To fulfill OODataDesign.doc
-		friend ostream&  operator<<(ostream& fout, Bargain& bargain);
-		friend ifstream& operator>>(ifstream& fin, Bargain& bargain);
-	
-		virtual void Extract() throw(IOMgmt::TokenError);
-		virtual void Insert();
+	// To fulfill OODataDesign.doc
+	friend ostream&  operator<<(ostream& fout, Bargain& bargain);
+	friend ifstream& operator>>(ifstream& fin, Bargain& bargain);
 
-	protected:
-		// To fulfill OODataDesign.doc
-		virtual void Put();
-		virtual void Get() throw(IOMgmt::TokenError);
+	virtual void Extract() throw(IOMgmt::TokenError);
+	virtual void Insert();
 
-	private:
-		Bargain bargain;
+protected:
+	// To fulfill OODataDesign.doc
+	virtual void Put();
+	virtual void Get() throw(IOMgmt::TokenError);
+
+private:
+	Bargain bargain;
 };
 
 #endif

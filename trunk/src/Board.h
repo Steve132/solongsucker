@@ -9,32 +9,32 @@
 
 class Board
 {
-	public:
-		Board();
-		~Board();
-	
-		// Styled after Workman's Conversation class
-		void Initialize();
-		void Simulate();	// Performs rule checking
-		void WrapUp();
+public:
+	Board();
+	~Board();
 
-		SimMgmt::Message* AcceptChipsDiscard(std::multiset<Chip> chips);
+	// Styled after Workman's Conversation class
+	void Initialize();
+	void Simulate();	// Performs rule checking
+	void WrapUp();
 
-		// To fulfill OODataDesign.doc
-		friend ostream&  operator<<(ostream& fout, Bargain& bargain);
-		friend ifstream& operator>>(ifstream& fin, Bargain& bargain);
-	
-		virtual void Extract() throw(IOMgmt::TokenError);
-		virtual void Insert();
+	SimMgmt::Message* AcceptChipsDiscard(std::multiset<Chip> chips);
 
-	protected:
-		// To fulfill OODataDesign.doc
-		virtual void Put();
-		virtual void Get() throw(IOMgmt::TokenError);
+	// To fulfill OODataDesign.doc
+	friend ostream&  operator<<(ostream& fout, Bargain& bargain);
+	friend ifstream& operator>>(ifstream& fin, Bargain& bargain);
 
-	private:
-		std::set<Player> players;
-		std::list<Pile> stacks;
+	virtual void Extract() throw(IOMgmt::TokenError);
+	virtual void Insert();
+
+protected:
+	// To fulfill OODataDesign.doc
+	virtual void Put();
+	virtual void Get() throw(IOMgmt::TokenError);
+
+private:
+	std::set<Player> players;
+	std::list<Pile> stacks;
 };
 
 #endif
