@@ -1,13 +1,13 @@
 #include "ChipMsg.h"
 #include "IOMacros.h"
 
-ChipMsg::ChipMsg(const int Handler, const std::string Description) : 
-	SimMgmt::Message(Handler, Description)
+ChipMsg::ChipMsg(const int Handler, const std::string Description) :
+		SimMgmt::Message(Handler, Description)
 {
 }
 
 ChipMsg::ChipMsg(const int Handler, const std::string Description, const Chip chipIn) :
-	SimMgmt::Message(Handler, Description), chip(chipIn)
+		SimMgmt::Message(Handler, Description), chip(chipIn)
 {
 }
 

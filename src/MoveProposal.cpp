@@ -6,7 +6,7 @@ MoveProposal::MoveProposal()
 }
 
 MoveProposal::MoveProposal(const std::list<Pile>::iterator pileIterator, const Chip chipId)	:
-	pile(pileIterator), chip(chipId)
+		pile(pileIterator), chip(chipId)
 {
 }
 

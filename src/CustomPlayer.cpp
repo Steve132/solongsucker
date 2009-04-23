@@ -6,9 +6,9 @@ CustomPlayer::CustomPlayer()
 }
 
 CustomPlayer::CustomPlayer(unsigned SizeOfHand, Chip Id, property* Properties) :
-	Player(SizeOfHand, Id)
+		Player(SizeOfHand, Id)
 {
-	for(unsigned i = 0; i < (sizeof(Properties)/sizeof(property)); i++)
+	for (unsigned i = 0; i < (sizeof(Properties)/sizeof(property)); i++)
 		properties[i] = Properties[i];
 }
 

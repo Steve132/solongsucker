@@ -8,22 +8,22 @@
 
 class Hand : private std::multiset<Chip>
 {
-	public:
-		Hand();
-		Hand(const unsigned Size, const Chip chipId);
-		~Hand();
-		
-		// To fulfill OODataDesign.doc
-		friend std::ostream&  operator<<(std::ostream& fout, Hand& hand);
-		friend std::ifstream& operator>>(std::ifstream& fin, Hand& hand);
+public:
+	Hand();
+	Hand(const unsigned Size, const Chip chipId);
+	~Hand();
 
-		virtual void Extract() throw(IOMgmt::TokenError);
-		virtual void Insert();
+	// To fulfill OODataDesign.doc
+	friend std::ostream&  operator<<(std::ostream& fout, Hand& hand);
+	friend std::ifstream& operator>>(std::ifstream& fin, Hand& hand);
 
-	protected:
-		// To fulfill OODataDesign.doc
-		virtual void Put();
-		virtual void Get() throw(IOMgmt::TokenError);
+	virtual void Extract() throw(IOMgmt::TokenError);
+	virtual void Insert();
+
+protected:
+	// To fulfill OODataDesign.doc
+	virtual void Put();
+	virtual void Get() throw(IOMgmt::TokenError);
 };
 
 #endif
