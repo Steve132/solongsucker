@@ -38,9 +38,42 @@ void classname::Get()	throw(IOMgmt::TokenError)		\
 {												\
 }
 
+#define GETVAR(classname, n, members...)				\
+void classname::Get()	throw(IOMgmt::TokenError)		\
+{												\
+	std::ifstream& fin = SimMgmt::simInMgr.getStream();	\
+												\
+	std::string alltokentags = "";					\
+	for(unsigned i = 0; i < (n-1); i++)				\
+		alltokentags += ", " + TAG(members[i]);			\
+	alltokentags += TAG(members[i]);					\
+												\
+	for(unsigned i = 0; i < n; i++)					\
+	{											\
+		std::string token;							\
+		fin >> token;								\
+		for(unsigned j = 0; j < n; j++)				\
+		{										\
+			if(token == TAG(members[j])				\
+				fin >> members[j];					\
+		}										\
+		if(j == n)								\
+			throw IOMgmt::TokenError(std::string("Unrecognized open token, " + token + ", '" + alltokentags + "' expected!"), std::string(std::string(#classname)) + "::Get()"));		\
+	}											\
+}
+
 #define PUT(classname)								\
 void classname::Put()								\
 {												\
+}
+
+#define PUTVAR(classname, n, members...)				\
+void classname::Put()								\
+{												\
+	std::ostream& fout = SimMgmt::simOutMgr.getStream();	\
+												\
+	for(unsigned i = 0; i < n; i++)					\
+		fout << TAG(members[i]) << " " << members[i] " ";	\
 }
 
 #define OUT_OPERATOR(classname)						\

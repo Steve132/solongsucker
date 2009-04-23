@@ -8,6 +8,7 @@
 class Bargain
 {
 	public:
+		Bargain();
 		Bargain(const MoveProposal currentMoveProposal, const std::multiset<Chip> Chips, const Chip NextTurn);
 		~Bargain();
 

@@ -1,6 +1,10 @@
 #include "Bargain.h"
 #include "IOMacros.h"
 
+Bargain::Bargain()
+{
+}
+
 Bargain::Bargain(const MoveProposal currentMoveProposal, const std::multiset<Chip> Chips, const Chip NextTurn) :
 	move(currentMoveProposal), chips(Chips), nextTurn(NextTurn)
 {
