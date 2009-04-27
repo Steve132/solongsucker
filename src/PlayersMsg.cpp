@@ -78,12 +78,14 @@ void PlayersMsg::setAgent(string playerid, AGENTPTR agent) throw(AppError)
 	if ( lastAgent >= numAgents )
 		throw AppError("Agent overflow attempted!",
 		               "PlayersMsg::setAgent(@1)");
+
 	for (int i=0; i < lastAgent; i++)
 	{
 		if ( playerid == agentNames[i] || agent == agents[i] )
 			throw AppError("Duplicate definition of Agent attempted!",
 			               "PlayersMsg::setAgent(@2)");
 	}//for
+
 	agentNames[lastAgent] = playerid;
 	agents[lastAgent]     = agent;
 }

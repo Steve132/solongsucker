@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <cstdio>
+#include <sstream>
 using namespace std;
 using namespace IOMgmt;
 using namespace SimMgmt;
@@ -100,7 +101,11 @@ void SoLongSucker::Initialize()
 
 	// Set players
 	for ( i=0; i < numPlayers; i++ )
-		playersm->setAgent( players[i]->NameOf() , players[i] );
+	{
+		std::ostringstream oss;
+		oss << i;
+		playersm->setAgent( oss.str() , players[i] );
+	}
 
 	// Initialize players
 	for ( i=0; i < numPlayers; i++ )
