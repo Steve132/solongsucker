@@ -7,9 +7,6 @@ int main()
 	{
 		SoLongSucker game;
 
-		// Output state of the conversation
-		game.Insert();
-
 		// Initialize conversation
 		game.Initialize();
 
