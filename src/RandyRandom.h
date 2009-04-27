@@ -9,6 +9,8 @@ class RandyRandom: public Player
 {
 public:
 	RandyRandom(const unsigned sizeOfHand, const Chip Id);
+	virtual void Extract() throw(IOMgmt::TokenError);
+	virtual void Insert();
 };
 }
 
