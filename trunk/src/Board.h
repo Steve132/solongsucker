@@ -1,8 +1,8 @@
 #ifndef _BOARD
 #define _BOARD
 
+#include "Bargain.h"
 #include "Chip.h"
-#include "Player.h"
 #include "SimMgmt.h"
 #include "Pile.h"
 #include <set>
@@ -13,12 +13,11 @@ public:
 	Board();
 	~Board();
 
-	// Styled after Workman's Conversation class
-	void Initialize();
-	void Simulate();	// Performs rule checking
-	void WrapUp();
-
-	SimMgmt::Message* AcceptChipsDiscard(std::multiset<Chip> chips);
+	void discardChips(const std::multiset<Chip> chips);
+	bool addChipToPile(const Chip c, const unsigned index);
+	void createNewPile(const Chip c);
+	std::list<Pile>::iterator getIterator() { std::list<Pile>::iterator i = stacks.begin(); return i; }
+	std::multiset<Chip> getDeadbox() const { return deadbox; }
 
 	// To fulfill OODataDesign.doc
 	friend ostream&  operator<<(ostream& fout, Bargain& bargain);
@@ -33,8 +32,8 @@ protected:
 	virtual void Get() throw(IOMgmt::TokenError);
 
 private:
-	std::set<Player> players;
 	std::list<Pile> stacks;
+	std::multiset<Chip> deadbox;
 };
 
 #endif
