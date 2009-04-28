@@ -21,6 +21,7 @@ Message  *Player::AcceptTerminate()
 	oss <<  "player " << id;
 	return new Message(4,"Terminate: " + oss.str());
 }
+
 void Player::Initialize(SimMgmt::Message* players)
 {
 }
@@ -51,11 +52,33 @@ ChipMsg* Player::AcceptChipMsgGiveTurn(std::list<Player> validPlayers)
 
 INSERT(Player)
 
-PUT(Player)
+void Player::Put()
+{
+	std::ostream& fout = simOutMgr.getStream();
+	fout << TAG(hand) << " " << hand << " ";
+	fout << TAG(id) << " " << id << " ";
+}
 
 EXTRACT(Player)
 
-GET(Player)
+void Player::Get() throw(IOMgmt::TokenError)
+{
+/*
+	std::ifstream& fin = simInMgr.getStream();
+
+	for(int i = 0; i < 2; i++)
+	{
+		std::string token = "";
+		fin >> token;
+		if(token == TAG(id))
+			fin >> id;
+		else if(token == TAG(hand))
+			fin >> hand;
+		else
+			throw IOMgmt::TokenError(std::string("Unexpected token '" + token + "', '" + TAG(id) + "' or '" + TAG(hand) + "' expected!"), std::string("Player::Get()"));
+	}
+*/
+}
 
 OUT_OPERATOR(Player)
 
