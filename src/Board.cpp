@@ -9,20 +9,37 @@ Board::~Board()
 {
 }
 
-void Board::Initialize()
+bool Board::addChipToPile(const Chip c, const unsigned index)
 {
+	// If index beyond number of Piles, create new Pile
+	unsigned count = 0;
+	if(index > stacks.size())
+		createNewPile(c);
+
+	// Add chip to Pile at index
+	std::list<Pile>::iterator i = stacks.begin();
+	while(count < index)
+	{
+		i++;
+		count++;
+	}
+	Chip prev = (*i).back();
+	(*i).push_back(c);
+
+	// Check to see if two identical Chips are at top of pile
+	return (prev == c);
 }
 
-void Board::Simulate()
+void Board::createNewPile(const Chip c)
 {
+	Pile p;
+	stacks.push_back(p);
+	(*(stacks.end())).push_back(c);
 }
 
-void Board::WrapUp()
+void Board::discardChips(const std::multiset<Chip> chips)
 {
-}
-
-SimMgmt::Message* Board::AcceptChipsDiscard(std::multiset<Chip> chips)
-{
+	deadbox.insert(chips.begin(), chips.end());
 }
 
 INSERT(Board)

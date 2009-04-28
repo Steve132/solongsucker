@@ -13,6 +13,8 @@ public:
 	~Pile();
 
 	// Permit access to deque functions
+	using std::deque<Chip>::push_back;
+	using std::deque<Chip>::back;
 
 	// To fulfill OODataDesign.doc
 	friend std::ostream&  operator<<(std::ostream& fout, Pile& stack);

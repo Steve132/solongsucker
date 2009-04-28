@@ -24,6 +24,7 @@ Message  *Player::AcceptTerminate()
 
 void Player::Initialize(SimMgmt::Message* players)
 {
+	
 }
 
 void Player::Dispatch(SimMgmt::Message* msg)
