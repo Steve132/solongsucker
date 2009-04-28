@@ -18,6 +18,8 @@ public:
 	virtual void Extract()  throw(IOMgmt::TokenError);
 	virtual void Insert();
 
+	Chip& getChip() { return chip; }
+
 protected:
 	// To fulfill OODataDesign.doc
 	virtual void Put();

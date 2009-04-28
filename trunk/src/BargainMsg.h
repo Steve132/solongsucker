@@ -17,6 +17,7 @@ public:
 
 	virtual void Extract() throw(IOMgmt::TokenError);
 	virtual void Insert();
+	Bargain& getBargain() {return bargain;}
 
 protected:
 	// To fulfill OODataDesign.doc

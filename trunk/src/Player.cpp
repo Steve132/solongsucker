@@ -27,19 +27,73 @@ void Player::Initialize(SimMgmt::Message* players)
 	
 }
 
+void Player::doTerminate()
+{
+	ostream& simlog = simOutMgr.getStream();
+
+	simOutMgr.newLine();
+	simOutMgr.pushMargin();
+	simlog << "At time: " << theEventMgr.clock();
+	simlog << ", Student: " + NameOf() + " is terminating!";
+	simOutMgr.advToMargin();
+	simlog << *this;
+	simOutMgr.popMargin();
+	simOutMgr.advToMargin();
+}
+
+void Player::doGiveTurn(const Chip Id)
+{
+}
+void Player::doBargainOffer(Bargain* b)
+{
+}
+void Player::doBargainAccept(Bargain* b)
+{
+}
+void Player::doBargainReject(Bargain* b)
+{
+}
+
 void Player::Dispatch(SimMgmt::Message* msg)
 {
+	int h          = msg->getHandler();
+	switch ( h )
+	{
+		case 1:
+		{
+			doGiveTurn(dynamic_cast<ChipMsg*>(msg)->getChip());
+			break;
+		}
+		case 2:
+		{
+			doBargainOffer(&dynamic_cast<BargainMsg*>(msg)->getBargain());
+			break;
+		}
+		case 3:
+		{
+			doBargainAccept(&dynamic_cast<BargainMsg*>(msg)->getBargain());
+			break;
+		}
+		case 4: doTerminate(); break;
+		case 5:
+		{
+			doBargainReject(&dynamic_cast<BargainMsg*>(msg)->getBargain());
+			break;
+		}
+		default: throw AppError("Undefined handler ID!", "Student::Dispatch()");
+	}
 }
 
-Bargain* Player::AcceptBargainOffer()
+BargainMsg* Player::AcceptBargainOffer()
+{
+	//return new BargainMsg(
+}
+
+BargainMsg* Player::AcceptBargainAccept()
 {
 }
 
-Bargain* Player::AcceptBargainAccept()
-{
-}
-
-Bargain* Player::AcceptBargainReject()
+BargainMsg* Player::AcceptBargainReject()
 {
 }
 
@@ -47,7 +101,7 @@ void Player::TakeTurn()
 {
 }
 
-ChipMsg* Player::AcceptChipMsgGiveTurn(std::list<Player> validPlayers)
+ChipMsg* Player::AcceptChipMsgGiveTurn()
 {
 }
 

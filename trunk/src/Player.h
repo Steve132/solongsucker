@@ -1,7 +1,7 @@
 #ifndef _PLAYER
 #define _PLAYER
 
-#include "Bargain.h"
+#include "BargainMsg.h"
 #include "Chip.h"
 #include "ChipMsg.h"
 #include "Hand.h"
@@ -20,13 +20,13 @@ public:
 	void Dispatch(SimMgmt::Message* msg);
 
 	// Styled after Workman's message passing system
-	Bargain* AcceptBargainOffer();
-	virtual Bargain* AcceptBargainAccept();
-	virtual Bargain* AcceptBargainReject();
+	virtual BargainMsg* AcceptBargainOffer();
+	virtual BargainMsg* AcceptBargainAccept();
+	virtual BargainMsg* AcceptBargainReject();
 	virtual SimMgmt::Message  *AcceptTerminate();
 
 	void TakeTurn();
-	ChipMsg* AcceptChipMsgGiveTurn(std::list<Player> validPlayers);
+	ChipMsg* AcceptChipMsgGiveTurn();
 
 	// To fulfill OODataDesign.doc
 	friend std::ostream&  operator<<(std::ostream& fout, Pile& stack);
@@ -34,6 +34,14 @@ public:
 
 	virtual void Extract() throw(IOMgmt::TokenError);
 	virtual void Insert();
+	
+
+	void doGiveTurn(const Chip Id);
+	void doBargainOffer(Bargain* b);
+	void doBargainAccept(Bargain* b);
+	void doBargainReject(Bargain* b);
+	void doTerminate();
+	
 
 protected:
 	// To fulfill OODataDesign.doc
