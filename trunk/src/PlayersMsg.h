@@ -12,7 +12,7 @@ public:
 	SimMgmt::Agent* getAgent(string playerid) throw(AppError);
 	SimMgmt::Agent** getOthers(int Num) throw(AppError);
 	void      setAgent(string playerid, SimMgmt::Agent* agent) throw(AppError);
-
+	SimMgmt::Agent**	  getPlayers(){return agents;}
 protected:
 	//Inherited as virtual and must be redefined:
 	virtual void Insert();//Must write to the default program output stream
