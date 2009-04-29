@@ -27,6 +27,7 @@ public:
 	virtual SimMgmt::Message  *AcceptTerminate();
 
 	void TakeTurn();
+	void TakePile(std::list<Pile>::iterator pile);
 	ChipMsg* AcceptChipMsgGiveTurn(Chip);
 
 	// To fulfill OODataDesign.doc

@@ -43,6 +43,11 @@ void Player::doTerminate()
 	simOutMgr.advToMargin();
 }
 
+void Player::TakePile(std::list<Pile>::iterator i)
+{
+	board->takePile(i);
+}
+
 void Player::TakeTurn()
 {
 	ostream& simlog = simOutMgr.getStream();
@@ -126,8 +131,8 @@ void Player::executeMove(MoveProposal& move)
 {
 	if(board->addChipToPile(move))
 	{
-	;//	SimMgmt::theEventMgr.postEvent(Event(1, this, otherplayers[(move.getChip())], msg));//create event based on giveturnpickuppilemsg, player given by move.getChip()
-		
+		otherplayers[(move.getChip())]->TakePile(move.getPile());
+		SimMgmt::theEventMgr.postEvent(Event(1, this, otherplayers[(move.getChip())], AcceptChipMsgGiveTurn(move.getChip())));
 	}
 }
 
