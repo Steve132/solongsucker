@@ -51,6 +51,11 @@ void Board::createNewPile(const Chip c)
 	(*(stacks.end())).push_back(c);
 }
 
+void Board::takePile(std::list<Pile>::iterator i)
+{
+	stacks.erase(i);
+}
+
 void Board::discardChips(const std::multiset<Chip> chips)
 {
 	deadbox.insert(chips.begin(), chips.end());
