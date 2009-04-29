@@ -25,7 +25,11 @@ public:
 	virtual BargainMsg* AcceptBargainAccept(const Bargain&);
 	virtual BargainMsg* AcceptBargainReject(const Bargain&);
 	virtual SimMgmt::Message  *AcceptTerminate();
+
+	// Pure virtual functions for game functionality to be decided by AIs
+	virtual void PerformMove() = 0;
 	virtual Bargain CreateBargain() = 0;
+	virtual void AcceptOrRejectBargain(Bargain* b) = 0;
 
 	void TakeTurn();
 	void TakePile(std::list<Pile>::iterator pile);
@@ -52,6 +56,8 @@ protected:
 	// To fulfill OODataDesign.doc
 	virtual void Get() throw(IOMgmt::TokenError);
 	virtual void Put();
+
+	std::list<Bargain> bargains;
 
 private:
 	Board* board;
