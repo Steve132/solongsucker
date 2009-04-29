@@ -43,8 +43,22 @@ void Player::doTerminate()
 	simOutMgr.advToMargin();
 }
 
+void Player::TakeTurn()
+{
+	ostream& simlog = simOutMgr.getStream();
+	simOutMgr.newLine();
+	simOutMgr.pushMargin();
+	simlog << "It is now Player " << id << "'s turn.";
+}
+
 void Player::doGiveTurn(const Chip Id)
 {
+	currentturn=Id;
+	if(Id==id)
+	{
+		TakeTurn();
+	}
+	
 }
 void Player::doBargainOffer(Bargain* b)
 {

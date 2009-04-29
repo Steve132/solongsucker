@@ -115,6 +115,11 @@ void SoLongSucker::Initialize()
 	simlog << *playersm;
 	simOutMgr.newLine();
 
+	srand(time(NULL));
+	int playerselect=rand() % numPlayers;
+	for ( i=0;i < numPlayers; i++)
+		players[i]->Dispatch(dynamic_cast<Player*>(players[i])->AcceptChipMsgGiveTurn(playerselect));
+
 	delete playersm;
 }
 
