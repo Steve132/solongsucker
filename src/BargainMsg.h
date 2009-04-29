@@ -4,7 +4,7 @@
 #include "Bargain.h"
 #include "SimMgmt.h"
 
-class BargainMsg : SimMgmt::Message
+class BargainMsg : public SimMgmt::Message
 {
 public:
 	BargainMsg(int Handler, std::string Description);

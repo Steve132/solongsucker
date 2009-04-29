@@ -6,6 +6,11 @@ JacobJerk::JacobJerk(const unsigned sizeOfHand, const Chip Id, Board* board):Pla
 {
 }
 
+Bargain JacobJerk::CreateBargain()
+{
+	return Bargain();
+}
+
 EXTRACT(JacobJerk)
 
 INSERT(JacobJerk)

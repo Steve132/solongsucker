@@ -6,6 +6,11 @@ NancyNice::NancyNice(const unsigned sizeOfHand, const Chip Id, Board* board):Pla
 {
 }
 
+Bargain NancyNice::CreateBargain()
+{
+	return Bargain();
+}
+
 EXTRACT(NancyNice)
 
 INSERT(NancyNice)

@@ -60,10 +60,8 @@ void Player::doGiveTurn(const Chip Id)
 {
 	currentturn=Id;
 	if(Id==id)
-	{
 		TakeTurn();
-	}
-	
+	otherplayers[id]->Dispatch(otherplayers[id]->AcceptBargainOffer(CreateBargain()));
 }
 void Player::doBargainOffer(Bargain* b)
 {

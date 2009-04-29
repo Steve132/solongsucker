@@ -6,6 +6,11 @@ RandyRandom::RandyRandom(const unsigned sizeOfHand, const Chip Id, Board* board)
 {
 }
 
+Bargain RandyRandom::CreateBargain()
+{
+	return Bargain();
+}
+
 EXTRACT(RandyRandom)
 
 INSERT(RandyRandom)

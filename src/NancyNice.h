@@ -9,6 +9,7 @@ class NancyNice: public Player
 {
 public:
 	NancyNice(const unsigned sizeOfHand, const Chip Id, Board* board);
+	Bargain CreateBargain();
 	virtual void Extract() throw(IOMgmt::TokenError);
 	virtual void Insert();
 };
