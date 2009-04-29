@@ -14,6 +14,9 @@ public:
 	MoveProposal(const std::list<Pile>::iterator pileIterator, const Chip chipId);
 	~MoveProposal();
 
+	Chip getChip() const { return chip; }
+	std::list<Pile>::iterator getPile() const { return pile; }
+
 	// To fulfill OODataDesign.doc
 	friend std::ostream&  operator<<(std::ostream& fout, MoveProposal& MoveProposal);
 	friend std::ifstream& operator>>(std::ifstream& fin, MoveProposal& MoveProposal);

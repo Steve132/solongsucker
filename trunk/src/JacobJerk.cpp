@@ -2,7 +2,7 @@
 #include "IOMacros.h"
 using namespace AI;
 
-JacobJerk::JacobJerk(const unsigned sizeOfHand, const Chip Id):Player(sizeOfHand,Id)
+JacobJerk::JacobJerk(const unsigned sizeOfHand, const Chip Id, Board* board):Player(sizeOfHand,Id,board)
 {
 }
 

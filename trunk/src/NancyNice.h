@@ -8,7 +8,7 @@ namespace AI{
 class NancyNice: public Player
 {
 public:
-	NancyNice(const unsigned sizeOfHand, const Chip Id);
+	NancyNice(const unsigned sizeOfHand, const Chip Id, Board* board);
 	virtual void Extract() throw(IOMgmt::TokenError);
 	virtual void Insert();
 };

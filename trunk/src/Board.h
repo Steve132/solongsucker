@@ -14,6 +14,7 @@ public:
 	~Board();
 
 	void discardChips(const std::multiset<Chip> chips);
+	bool addChipToPile(const MoveProposal& move);
 	bool addChipToPile(const Chip c, const unsigned index);
 	void createNewPile(const Chip c);
 	std::list<Pile>::iterator getIterator() { std::list<Pile>::iterator i = stacks.begin(); return i; }
