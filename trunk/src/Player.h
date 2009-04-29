@@ -51,6 +51,7 @@ protected:
 private:
 	Hand hand;
 	Chip id;
+	Chip currentturn;
 	std::vector<Player*> otherplayers;
 };
 
