@@ -25,6 +25,7 @@ public:
 	virtual BargainMsg* AcceptBargainAccept(const Bargain&);
 	virtual BargainMsg* AcceptBargainReject(const Bargain&);
 	virtual SimMgmt::Message  *AcceptTerminate();
+	virtual Bargain CreateBargain() = 0;
 
 	void TakeTurn();
 	void TakePile(std::list<Pile>::iterator pile);
