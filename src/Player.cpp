@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "IOMacros.h"
 #include <sstream>
+#include "PlayersMsg.h"
 using namespace SimMgmt;
 
 Player::Player()
@@ -24,7 +25,8 @@ Message  *Player::AcceptTerminate()
 
 void Player::Initialize(SimMgmt::Message* players)
 {
-	
+	PlayersMsg* pm=dynamic_cast<PlayersMsg*>(players);
+	otherplayers.insert(otherplayers.begin(),(Player**)(pm->getPlayers()),(Player**)(pm->getPlayers())+pm->getNumAgents());
 }
 
 void Player::doTerminate()
@@ -34,7 +36,7 @@ void Player::doTerminate()
 	simOutMgr.newLine();
 	simOutMgr.pushMargin();
 	simlog << "At time: " << theEventMgr.clock();
-	simlog << ", Student: " + NameOf() + " is terminating!";
+	simlog << ", Student: " << id <<  " is terminating!";
 	simOutMgr.advToMargin();
 	simlog << *this;
 	simOutMgr.popMargin();
@@ -84,25 +86,26 @@ void Player::Dispatch(SimMgmt::Message* msg)
 	}
 }
 
-BargainMsg* Player::AcceptBargainOffer()
+BargainMsg* Player::AcceptBargainOffer(const Bargain& b)
 {
-	//return new BargainMsg(
+	return new BargainMsg(2,"There was a bargain offered",b);
 }
 
-BargainMsg* Player::AcceptBargainAccept()
+BargainMsg* Player::AcceptBargainAccept(const Bargain& b)
 {
+	return new BargainMsg(3,"There was a bargain accepted",b);
 }
 
-BargainMsg* Player::AcceptBargainReject()
+BargainMsg* Player::AcceptBargainReject(const Bargain& b)
 {
+	return new BargainMsg(5,"There was a bargain rejected",b);
 }
 
-void Player::TakeTurn()
-{
-}
-
-ChipMsg* Player::AcceptChipMsgGiveTurn()
-{
+ChipMsg* Player::AcceptChipMsgGiveTurn(Chip c)
+{	
+	ostringstream oss;
+	oss << "The turn has been given to " << c << endl;	
+	return new ChipMsg(1,oss.str(),c);
 }
 
 INSERT(Player)

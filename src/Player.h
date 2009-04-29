@@ -7,7 +7,7 @@
 #include "Hand.h"
 #include "SimMgmt.h"
 #include <list>
-
+#include <vector>
 class Player : public SimMgmt::Agent
 {
 public:
@@ -20,13 +20,13 @@ public:
 	void Dispatch(SimMgmt::Message* msg);
 
 	// Styled after Workman's message passing system
-	virtual BargainMsg* AcceptBargainOffer();
-	virtual BargainMsg* AcceptBargainAccept();
-	virtual BargainMsg* AcceptBargainReject();
+	virtual BargainMsg* AcceptBargainOffer(const Bargain&);
+	virtual BargainMsg* AcceptBargainAccept(const Bargain&);
+	virtual BargainMsg* AcceptBargainReject(const Bargain&);
 	virtual SimMgmt::Message  *AcceptTerminate();
 
 	void TakeTurn();
-	ChipMsg* AcceptChipMsgGiveTurn();
+	ChipMsg* AcceptChipMsgGiveTurn(Chip);
 
 	// To fulfill OODataDesign.doc
 	friend std::ostream&  operator<<(std::ostream& fout, Pile& stack);
@@ -51,6 +51,7 @@ protected:
 private:
 	Hand hand;
 	Chip id;
+	std::vector<Player*> otherplayers;
 };
 
 #endif
