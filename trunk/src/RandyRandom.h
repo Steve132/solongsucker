@@ -9,7 +9,9 @@ class RandyRandom: public Player
 {
 public:
 	RandyRandom(const unsigned sizeOfHand, const Chip Id, Board* board);
+	void PerformMove();
 	Bargain CreateBargain();
+	void AcceptOrRejectBargain(Bargain* b);
 	virtual void Extract() throw(IOMgmt::TokenError);
 	virtual void Insert();
 };

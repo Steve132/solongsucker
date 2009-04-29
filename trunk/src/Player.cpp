@@ -54,6 +54,8 @@ void Player::TakeTurn()
 	simOutMgr.newLine();
 	simOutMgr.pushMargin();
 	simlog << "It is now Player " << id << "'s turn.";
+
+	PerformMove();
 }
 
 void Player::doGiveTurn(const Chip Id)
@@ -61,14 +63,19 @@ void Player::doGiveTurn(const Chip Id)
 	currentturn=Id;
 	if(Id==id)
 		TakeTurn();
-	otherplayers[id]->Dispatch(otherplayers[id]->AcceptBargainOffer(CreateBargain()));
+	otherplayers[Id]->Dispatch(otherplayers[Id]->AcceptBargainOffer(CreateBargain()));
 }
+
 void Player::doBargainOffer(Bargain* b)
 {
+	AcceptOrRejectBargain(b);
 }
+
 void Player::doBargainAccept(Bargain* b)
 {
+	bargains.push_back(*b);
 }
+
 void Player::doBargainReject(Bargain* b)
 {
 }
@@ -141,6 +148,8 @@ void Player::Put()
 	std::ostream& fout = simOutMgr.getStream();
 	fout << TAG(hand) << " " << hand << " ";
 	fout << TAG(id) << " " << id << " ";
+	for(std::list<Bargain>::iterator i = bargains.begin(); i != bargains.end(); i++)
+		fout << TAG(*i) << " " << *i << " ";
 }
 
 EXTRACT(Player)
@@ -148,6 +157,7 @@ EXTRACT(Player)
 void Player::Get() throw(IOMgmt::TokenError)
 {
 /*
+	Note that this implementation does not read in any inital bargains to the Player
 	std::ifstream& fin = simInMgr.getStream();
 
 	for(int i = 0; i < 2; i++)
