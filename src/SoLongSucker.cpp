@@ -13,14 +13,14 @@ using namespace SimMgmt;
 #include "NancyNice.h"
 #include "RandyRandom.h"
 
-Player* allocatePlayerFromString(const std::string& name,int handsize,int chipno)
+Player* allocatePlayerFromString(const std::string& name,int handsize,int chipno,Board* board)
 {
 	if(name=="JacobJerk{")
-		return new AI::JacobJerk(handsize,chipno);
+		return new AI::JacobJerk(handsize,chipno,board);
 	else if(name=="NancyNice{")
-		return new AI::NancyNice(handsize,chipno);
+		return new AI::NancyNice(handsize,chipno,board);
 	else if(name=="RandyRandom{")
-		return new AI::RandyRandom(handsize,chipno);
+		return new AI::RandyRandom(handsize,chipno,board);
 	else
 		return NULL;
 }
@@ -66,7 +66,7 @@ SoLongSucker::SoLongSucker()
 		simInMgr.setFilePos();
 		std::string playertag;
 		fin >> playertag;
-		players[i] = allocatePlayerFromString(playertag,numChipsPerPlayer,i);
+		players[i] = allocatePlayerFromString(playertag,numChipsPerPlayer,i,&board);
 		simInMgr.resetFilePos();		
 		players[i]->Extract();
 	}

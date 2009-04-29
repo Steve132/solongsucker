@@ -2,7 +2,7 @@
 #include "IOMacros.h"
 using namespace AI;
 
-RandyRandom::RandyRandom(const unsigned sizeOfHand, const Chip Id):Player(sizeOfHand,Id)
+RandyRandom::RandyRandom(const unsigned sizeOfHand, const Chip Id, Board* board):Player(sizeOfHand,Id,board)
 {
 }
 

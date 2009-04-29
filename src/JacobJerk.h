@@ -8,7 +8,7 @@ namespace AI{
 class JacobJerk: public Player
 {
 public:
-	JacobJerk(const unsigned sizeOfHand, const Chip Id);
+	JacobJerk(const unsigned sizeOfHand, const Chip Id, Board* board);
 	virtual void Extract() throw(IOMgmt::TokenError);
 	virtual void Insert();
 };

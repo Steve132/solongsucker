@@ -8,8 +8,8 @@ Player::Player()
 {
 }
 
-Player::Player(const unsigned sizeOfHand, const Chip Id) :
-		id(Id), hand(sizeOfHand, Id)
+Player::Player(const unsigned sizeOfHand, const Chip Id, Board* inboard) :
+		id(Id), hand(sizeOfHand, Id), board(inboard)
 {
 }
 
@@ -120,6 +120,15 @@ ChipMsg* Player::AcceptChipMsgGiveTurn(Chip c)
 	ostringstream oss;
 	oss << "The turn has been given to " << c << endl;	
 	return new ChipMsg(1,oss.str(),c);
+}
+
+void Player::executeMove(MoveProposal& move)
+{
+	if(board->addChipToPile(move))
+	{
+	;//	SimMgmt::theEventMgr.postEvent(Event(1, this, otherplayers[(move.getChip())], msg));//create event based on giveturnpickuppilemsg, player given by move.getChip()
+		
+	}
 }
 
 INSERT(Player)

@@ -9,6 +9,20 @@ Board::~Board()
 {
 }
 
+bool Board::addChipToPile(const MoveProposal& move)
+{
+	unsigned count = 0;
+	std::list<Pile>::iterator pile = move.getPile();
+	for(std::list<Pile>::iterator i = stacks.begin(); i != stacks.end(); i++)
+	{
+		if(pile == i)
+			return (addChipToPile(move.getChip(), count));
+		count++;
+	}
+	createNewPile(move.getChip());
+	return true;
+}
+
 bool Board::addChipToPile(const Chip c, const unsigned index)
 {
 	// If index beyond number of Piles, create new Pile

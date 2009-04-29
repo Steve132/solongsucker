@@ -2,6 +2,7 @@
 #define _PLAYER
 
 #include "BargainMsg.h"
+#include "Board.h"
 #include "Chip.h"
 #include "ChipMsg.h"
 #include "Hand.h"
@@ -12,7 +13,7 @@ class Player : public SimMgmt::Agent
 {
 public:
 	Player();
-	Player(const unsigned sizeOfHand, const Chip Id);
+	Player(const unsigned sizeOfHand, const Chip Id, Board* inboard);
 	virtual ~Player();
 
 	// Required by Agent definition
@@ -44,11 +45,14 @@ public:
 	
 
 protected:
+	void executeMove(MoveProposal& move);
+
 	// To fulfill OODataDesign.doc
 	virtual void Get() throw(IOMgmt::TokenError);
 	virtual void Put();
 
 private:
+	Board* board;
 	Hand hand;
 	Chip id;
 	Chip currentturn;
