@@ -2,11 +2,6 @@ Section 4.3
 Class Specifications
 Author: Sarah
 
----
-NOTE that it is implied that WORKMAN ML be appended to each class description of methods.
-Also note that this does not include protocols, exceptions, or interaction tables, since we do not yet fully know what interactions will occur.
----
-
 Name: Bargain
 Type: Entity
 Purpose: Bargain exists to provide a basis of communication between existing Players in the simulation.  A Player can offer a set of Chips in hopes of getting the next turn and requesting a move or the Player in turn could offer to perform a move and give the turn to a player, provided that they give them a certain number of Chips.
@@ -37,10 +32,17 @@ Purpose: Chip exists as both a Player identification color and as tokens for pla
 Name: ChipMsg
 Type: Boundary
 Purpose: ChipMsg exists to provide a method of the discrete simulator of So Long Sucker to inform Players when it is their next turn or to inform the Player in turn of the available Players to select for the next turn, according to rules.
-Data Members: int handler, string description, Chip chip
+Data Members: int handler, string description, Chip chip, multiset<Chip> deadbox
 Methods:	public ChipMsg(int handler, string description)
 		public ChipMsg(int handler, string description, Chip& chip)
 		public ~ChipMsg()
+		public void discardChips(const std::multiset<Chip> chips);
+		public void takePile(std::list<Pile>::iterator i);
+		public bool addChipToPile(const MoveProposal& move);
+		public bool addChipToPile(const Chip c, const unsigned index);
+		public void createNewPile(const Chip c);
+		public std::list<Pile>::iterator getIterator() { std::list<Pile>::iterator i = stacks.begin(); return i; }
+		public std::multiset<Chip> getDeadbox() const { return deadbox; }
 
 Name: Hand
 Type: Entity
@@ -60,6 +62,10 @@ Methods:	public JacobJerk()
 		public Initialize(Message* players)
 		public Dispatch(Message* msg)
 
+		public void PerformMove();
+		public Bargain CreateBargain();
+		public void AcceptOrRejectBargain(Bargain* b);
+
 		public Bargain* AcceptBargainOffer();
 		public Bargain* AcceptBargainAccept();
 		public Bargain* AcceptBargainReject();
@@ -75,6 +81,9 @@ Methods:	public MoveProposal()
 		public MoveProposal(Chip chip, list<Pile>::iterator pile)
 		public ~MoveProposal()
 
+		public Chip getChip() const { return chip; }
+		public std::list<Pile>::iterator getPile() const { return pile; }
+
 Name: NancyNice
 Type: Control
 Purpose: NancyNice is a subclass of Player and provides a strategy by which to bargain during the simulation.
@@ -85,6 +94,10 @@ Methods:	public NancyNice()
 
 		public Initialize(Message* players)
 		public Dispatch(Message* msg)
+
+		public void PerformMove();
+		public Bargain CreateBargain();
+		public void AcceptOrRejectBargain(Bargain* b);
 
 		public Bargain* AcceptBargainOffer();
 		public Bargain* AcceptBargainAccept();
@@ -102,7 +115,7 @@ Methods:	public Pile()
 Name: Player
 Type: Control
 Purpose: Player is a subclass of Agent and provides a main actor for play during the simulation.
-Data Members: Hand hand, Chip chipId
+Data Members: Board* board, Hand hand, Chip id, Chip currentturn, vector<Player*> players, protected list<Bargain> bargains
 Methods:	public Player()
 		public Player(unsigned sizeOfHand, Chip chipId);
 		public ~Player()
@@ -113,17 +126,33 @@ Methods:	public Player()
 		public Bargain* AcceptBargainOffer();
 		public Bargain* AcceptBargainAccept();
 		public Bargain* AcceptBargainReject();
+		public virtual SimMgmt::Message* AcceptTerminate();
+
+		public virtual void PerformMove() = 0;
+		public virtual Bargain CreateBargain() = 0;
+		public virtual void AcceptOrRejectBargain(Bargain* b) = 0;
 
 		public void TakeTurn();
+		public void TakePile(std::list<Pile>::iterator pile);
 		public ChipMsg* AcceptChipMsgGiveTurn(list<Player> validPlayers);
+
+		public void doGiveTurn(const Chip Id);
+		public void doBargainOffer(Bargain* b);
+		public void doBargainAccept(Bargain* b);
+		public void doBargainReject(Bargain* b);
+		public void doTerminate();
 
 Name: PlayersMsg
 Type: Boundary
 Purpose: To inform a given Player of all other Players in the simulation.
-Data Members: int handler, string description, Player* players
-Methods:	public PlayersMsg(int handler, string description)
-		public PlayersMsg(int handler, string description, Player* players)
+Data Members: int numAgents, int lastAgent, Sim::Agent* *agents, string *agentNames;
+Methods:	public PlayersMsg(int maxAgents) throw(AppError)
 		public ~PlayersMsg()
+		public int getNumAgents();
+		public SimMgmt::Agent* getAgent(string playerid) throw(AppError);
+		public SimMgmt::Agent** getOthers(int Num) throw(AppError);
+		public void      setAgent(string playerid, SimMgmt::Agent* agent) throw(AppError);
+		public SimMgmt::Agent**	  getPlayers(){return agents;}
 
 Name: RandyRandom
 Type: Control
@@ -136,6 +165,10 @@ Methods:	public RandyRandom()
 		public Initialize(Message* players)
 		public Dispatch(Message* msg)
 
+		public void PerformMove();
+		public Bargain CreateBargain();
+		public void AcceptOrRejectBargain(Bargain* b);
+
 		public Bargain* AcceptBargainOffer();
 		public Bargain* AcceptBargainAccept();
 		public Bargain* AcceptBargainReject();
@@ -146,7 +179,14 @@ Methods:	public RandyRandom()
 Name: SoLongSucker
 Type: Control
 Purpose: SoLongSucker serves as the ground truth object for the simulation, starting and maintaining system and system log data.
-Data Members: Player* players, Board board
+Data Members: 
+	Board board;
+
+	int numPlayers;
+	int numChipsPerPlayer;
+	int numEvents;
+	int lastEvent;
+	SimMgmt::Agent  **players
 Methods:	public SoLongSucker()
 		public ~SoLongSucker()
 
@@ -154,7 +194,6 @@ Methods:	public SoLongSucker()
 		public void Simulate();
 		public void WrapUp();
 
-		public Message* AcceptChipsDiscard(multiset<Chip> chips);
 
 
 
