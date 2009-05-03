@@ -21,7 +21,7 @@ MoveProposal RandyRandom::PerformMove(std::vector<Player*>& p)
 	std::list<Pile>::iterator it=board->getIterator();
 	if(board->getNumPiles()!=0)
 	{
-		int rnum=rand()% (board->getNumPiles());	
+		int rnum=rand() % (board->getNumPiles());	
 		for(int i=0;i<rnum;++i)
 		{
 			it++;
@@ -39,14 +39,14 @@ MoveProposal RandyRandom::PerformMove(std::vector<Player*>& p)
 
 	struct shuffunctorwrap
 	{
-		static ptrdiff_t myrandom (ptrdiff_t i) { return rand()%i;}
+		static ptrdiff_t myrandom (ptrdiff_t i) { return rand() % i;}
 	};
 
 	std::random_shuffle(p.begin(),p.end(),shuffunctorwrap::myrandom);
 	return MoveProposal(it,c);
 
 	// Add chip to first pile as default if no bargains desired to be performed?
-//	if(i == bargains.end())
+//	if(i == bargains.end() )
 //		board->addChipToPile(id, 0);
 }
 

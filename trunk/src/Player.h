@@ -50,6 +50,7 @@ public:
 	void doBargainReject(Bargain* b);
 	void doTerminate();
 	
+	Chip getId() const {return id;}
 
 protected:
 	void executeMove(const MoveProposal& move,std::vector<Player*> &);

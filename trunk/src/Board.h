@@ -21,6 +21,7 @@ public:
 	std::list<Pile>::iterator getIterator() { std::list<Pile>::iterator i = stacks.begin(); return i; }
 	std::multiset<Chip> getDeadbox() const { return deadbox; }
 	int getNumPiles() const { return stacks.size(); }
+	bool isPile(const std::list<Pile>::iterator& i) {return i!=stacks.end();}
 
 	// To fulfill OODataDesign.doc
 	friend ostream&  operator<<(ostream& fout, Bargain& bargain);
