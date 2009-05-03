@@ -20,6 +20,7 @@ public:
 	void createNewPile(const Chip c);
 	std::list<Pile>::iterator getIterator() { std::list<Pile>::iterator i = stacks.begin(); return i; }
 	std::multiset<Chip> getDeadbox() const { return deadbox; }
+	int getNumPiles() const { return stacks.size(); }
 
 	// To fulfill OODataDesign.doc
 	friend ostream&  operator<<(ostream& fout, Bargain& bargain);

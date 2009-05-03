@@ -6,9 +6,13 @@
 #include <iostream>
 #include <set>
 
-class Hand : private std::multiset<Chip>
+class Hand: private std::multiset<Chip>
 {
 public:
+	using std::multiset<Chip>::erase;
+	using std::multiset<Chip>::size;
+	using std::multiset<Chip>::begin;
+	using std::multiset<Chip>::find;
 	Hand();
 	Hand(const unsigned Size, const Chip chipId);
 	~Hand();

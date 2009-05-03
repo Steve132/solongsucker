@@ -6,7 +6,7 @@ JacobJerk::JacobJerk(const unsigned sizeOfHand, const Chip Id, Board* board):Pla
 {
 }
 
-void JacobJerk::PerformMove()
+MoveProposal JacobJerk::PerformMove(std::vector<Player*>&)
 {
 	// Examine bargains in list
 	std::list<Bargain>::iterator i;
