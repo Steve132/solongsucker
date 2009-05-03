@@ -1,9 +1,9 @@
 SoLongSucker{
 	numPlayers: 5
 	numChipsPerPlayer: 7
-	JacobJerk{ }JacobJerk
 	RandyRandom{ }RandyRandom
 	RandyRandom{ }RandyRandom
-	NancyNice{ }NancyNice
-	NancyNice{ }NancyNice
+	RandyRandom{ }RandyRandom
+	RandyRandom{ }RandyRandom
+	RandyRandom{ }RandyRandom
 }SoLongSucker

@@ -6,7 +6,7 @@ NancyNice::NancyNice(const unsigned sizeOfHand, const Chip Id, Board* board):Pla
 {
 }
 
-void NancyNice::PerformMove()
+MoveProposal NancyNice::PerformMove(std::vector<Player*>&)
 {
 	// Examine bargains in list
 	std::list<Bargain>::iterator i;
@@ -14,6 +14,7 @@ void NancyNice::PerformMove()
 	{
 		;
 	}
+	//return MoveProposal(
 
 	// Add chip to first pile as default if no bargains desired to be performed?
 //	if(i == bargains.end())

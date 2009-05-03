@@ -54,8 +54,10 @@ void Player::TakeTurn()
 	simOutMgr.newLine();
 	simOutMgr.pushMargin();
 	simlog << "It is now Player " << id << "'s turn.";
-
-	PerformMove();
+	
+	std::vector<Player*> playerchoices=otherplayers;
+	MoveProposal mp=PerformMove(playerchoices);
+	executeMove(mp,playerchoices);
 }
 
 void Player::doGiveTurn(const Chip Id)
@@ -132,12 +134,17 @@ ChipMsg* Player::AcceptChipMsgGiveTurn(Chip c)
 	return new ChipMsg(1,oss.str(),c);
 }
 
-void Player::executeMove(MoveProposal& move)
+void Player::executeMove(const MoveProposal& move,std::vector<Player*>& playerchoices)
 {
+	hand.erase(hand.find(move.getChip()));	
 	if(board->addChipToPile(move))
 	{
 		otherplayers[(move.getChip())]->TakePile(move.getPile());
 		SimMgmt::theEventMgr.postEvent(Event(1, this, otherplayers[(move.getChip())], AcceptChipMsgGiveTurn(move.getChip())));
+	}
+	else
+	{
+		
 	}
 }
 

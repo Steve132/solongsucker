@@ -20,7 +20,7 @@ bool Board::addChipToPile(const MoveProposal& move)
 		count++;
 	}
 	createNewPile(move.getChip());
-	return true;
+	return false;
 }
 
 bool Board::addChipToPile(const Chip c, const unsigned index)

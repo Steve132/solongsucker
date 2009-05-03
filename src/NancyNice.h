@@ -9,7 +9,7 @@ class NancyNice: public Player
 {
 public:
 	NancyNice(const unsigned sizeOfHand, const Chip Id, Board* board);
-	void PerformMove();
+	MoveProposal PerformMove(std::vector<Player*>&);
 	Bargain CreateBargain();
 	void AcceptOrRejectBargain(Bargain* b);
 	virtual void Extract() throw(IOMgmt::TokenError);

@@ -7,6 +7,7 @@
 #include "ChipMsg.h"
 #include "Hand.h"
 #include "SimMgmt.h"
+#include "MoveProposal.h"
 #include <list>
 #include <vector>
 class Player : public SimMgmt::Agent
@@ -27,7 +28,7 @@ public:
 	virtual SimMgmt::Message  *AcceptTerminate();
 
 	// Pure virtual functions for game functionality to be decided by AIs
-	virtual void PerformMove() = 0;
+	virtual MoveProposal PerformMove(std::vector<Player*>&) = 0;
 	virtual Bargain CreateBargain() = 0;
 	virtual void AcceptOrRejectBargain(Bargain* b) = 0;
 
@@ -51,7 +52,7 @@ public:
 	
 
 protected:
-	void executeMove(MoveProposal& move);
+	void executeMove(const MoveProposal& move,std::vector<Player*> &);
 
 	// To fulfill OODataDesign.doc
 	virtual void Get() throw(IOMgmt::TokenError);
@@ -59,7 +60,6 @@ protected:
 
 	std::list<Bargain> bargains;
 
-private:
 	Board* board;
 	Hand hand;
 	Chip id;
