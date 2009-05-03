@@ -17,8 +17,17 @@ Hand::~Hand()
 
 INSERT(Hand)
 
-PUT(Hand)
-
+void Hand::Put()
+{
+	std::ostream& fout = SimMgmt::simOutMgr.getStream();
+	SimMgmt::simOutMgr.pushMargin();
+	for(iterator i = begin(); i != end(); i++)
+	{
+		fout << *i << " ";
+		//SimMgmt::simOutMgr.advToMargin();
+	}
+	SimMgmt::simOutMgr.popMargin();
+}
 EXTRACT(Hand)
 
 GET(Hand)

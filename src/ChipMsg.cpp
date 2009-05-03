@@ -17,7 +17,13 @@ ChipMsg::~ChipMsg()
 
 INSERT(ChipMsg)
 
-PUT(ChipMsg)
+void ChipMsg::Put()
+{
+	std::ostream& fout = SimMgmt::simOutMgr.getStream();
+	Message::Put();
+	SimMgmt::simOutMgr.advToMargin();
+	fout << TAG(chip) << " " << chip;
+}
 
 EXTRACT(ChipMsg)
 

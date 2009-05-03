@@ -6,6 +6,11 @@ JacobJerk::JacobJerk(const unsigned sizeOfHand, const Chip Id, Board* board):Pla
 {
 }
 
+int JacobJerk::PickUpPile(std::vector<Chip>&)
+{
+	return 0;
+}
+
 MoveProposal JacobJerk::PerformMove(std::vector<Player*>&)
 {
 	// Examine bargains in list
@@ -25,7 +30,7 @@ Bargain JacobJerk::CreateBargain()
 	return Bargain();
 }
 
-void JacobJerk::AcceptOrRejectBargain(Bargain* b)
+bool JacobJerk::AcceptOrRejectBargain(Bargain* b)
 {
 }
 

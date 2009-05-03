@@ -11,7 +11,7 @@ Player::Player()
 }
 
 Player::Player(const unsigned sizeOfHand, const Chip Id, Board* inboard) :
-		id(Id), hand(sizeOfHand, Id), board(inboard)
+		id(Id), hand(sizeOfHand, Id), board(inboard),dead(false)
 {
 }
 
@@ -47,6 +47,17 @@ void Player::doTerminate()
 
 void Player::TakePile(std::list<Pile>::iterator i)
 {
+	std::vector<Chip> pilep(i->begin(),i->end());
+	int ignorev=this->PickUpPile(pilep);
+	
+	hand.insert(pilep.begin(),pilep.begin()+ignorev);
+	hand.insert(pilep.begin()+ignorev+1,pilep.end());
+	
+	simOutMgr.newLine();
+	simOutMgr.pushMargin();
+	simOutMgr.getStream() << "Player " << id << " picked up pile " << *i << endl;
+	simOutMgr.getStream() << "Player discarded a Chip of type " << pilep[ignorev] << " from the pile." << endl;
+	simOutMgr.getStream() << "Player hand now looks like " << hand << endl;
 	board->takePile(i);
 }
 
@@ -67,8 +78,17 @@ void Player::TakeTurn()
 void Player::doGiveTurn(const Chip Id)
 {
 	currentturn=Id;
+	
 	if(hand.size()==0)
+	{	
+		if(dead==false)
+		{
+			simOutMgr.newLine();
+			simOutMgr.getStream() << "Player " << Id << " has been eliminated." << endl;
+			dead=true;
+		}
 		throw 23;
+	}
 	if(Id==id)
 		TakeTurn();
 	otherplayers[Id]->Dispatch(otherplayers[Id]->AcceptBargainOffer(CreateBargain()));
@@ -76,7 +96,20 @@ void Player::doGiveTurn(const Chip Id)
 
 void Player::doBargainOffer(Bargain* b)
 {
-	AcceptOrRejectBargain(b);
+	bool accepted=AcceptOrRejectBargain(b);
+	if(accepted)
+	{	
+		//3
+		SimMgmt::simOutMgr.getStream() << "Player " << getId() << " accepted a bargain!" << endl;
+		SimMgmt::theEventMgr.postEvent(Event(theEventMgr.clock()+1, this,otherplayers[rand()%otherplayers.size()], AcceptBargainAccept(*b)));
+	}
+	else
+	{
+		SimMgmt::simOutMgr.getStream() << "Player " << getId() << " rejected a bargain!" << endl;
+		SimMgmt::theEventMgr.postEvent(Event(theEventMgr.clock()+1, this,otherplayers[rand()%otherplayers.size()], AcceptBargainReject(*b)));
+		//5
+
+	}
 }
 
 void Player::doBargainAccept(Bargain* b)
@@ -101,8 +134,21 @@ void Player::Dispatch(SimMgmt::Message* msg)
 			}
 			catch(int)
 			{
-				//player dead.
-				//give turn back to him
+				Chip externalchip;
+				for(int i=0;i<otherplayers.size();i++)
+				{
+					if(!otherplayers[i]->Dead() && getId()!=i)
+					{
+						externalchip=i;
+						simOutMgr.newLine();
+						simOutMgr.pushMargin();
+						simOutMgr.advToMargin();	
+						simOutMgr.getStream() << "Attempted to give player " << id << " the turn, but player is dead.  Re-Giving turn to " << i <<".";
+						simOutMgr.popMargin();
+						SimMgmt::theEventMgr.postEvent(Event(theEventMgr.clock()+1, this,otherplayers[externalchip], AcceptChipMsgGiveTurn(externalchip)));
+						break;
+					}
+				}
 			}
 			break;
 		}
@@ -144,7 +190,7 @@ BargainMsg* Player::AcceptBargainReject(const Bargain& b)
 ChipMsg* Player::AcceptChipMsgGiveTurn(Chip c)
 {	
 	ostringstream oss;
-	oss << "The turn has been given to " << c << endl;	
+	oss << "The turn has been given to " << c;	
 	return new ChipMsg(1,oss.str(),c);
 }
 
@@ -160,8 +206,11 @@ void Player::executeMove(const MoveProposal& move,std::vector<Player*>& playerch
 	hand.erase(hand.find(move.getChip()));	
 	if(board->addChipToPile(move))
 	{
-		otherplayers[(move.getChip())]->TakePile(move.getPile());
-		SimMgmt::theEventMgr.postEvent(Event(1, this, otherplayers[(move.getChip())], AcceptChipMsgGiveTurn(move.getChip())));
+		if(!otherplayers[(move.getChip())]->Dead())
+		{
+			otherplayers[(move.getChip())]->TakePile(move.getPile());
+			SimMgmt::theEventMgr.postEvent(Event(theEventMgr.clock()+1, this, otherplayers[(move.getChip())], AcceptChipMsgGiveTurn(move.getChip())));
+		}	
 	}
 	else
 	{
@@ -170,7 +219,7 @@ void Player::executeMove(const MoveProposal& move,std::vector<Player*>& playerch
 			Pile& mypile=*move.getPile();
 			for(int i=0;i<playerchoices.size();++i)
 			{
-				std::cout << i << "Y:" << playerchoices[i]->getId() << ':' << mypile.size() << std::endl;
+			//	std::cout << i << "Y:" << playerchoices[i]->getId() << ':' << mypile.size() << std::endl;
 				bool found=false;
 				for(int j=0;j<mypile.size();j++)
 				{
@@ -180,17 +229,19 @@ void Player::executeMove(const MoveProposal& move,std::vector<Player*>& playerch
 						break;
 					}
 				}			
-				if(!found)
+				if(!found && !playerchoices[i]->Dead())
 				{
-					SimMgmt::theEventMgr.postEvent(Event(1, this,playerchoices[i], AcceptChipMsgGiveTurn(playerchoices[i]->getId())));
+					SimMgmt::theEventMgr.postEvent(Event(theEventMgr.clock()+1, this,playerchoices[i], AcceptChipMsgGiveTurn(playerchoices[i]->getId())));
 					break;
 				}
 			}
-			SimMgmt::theEventMgr.postEvent(Event(1, this,otherplayers[mypile[0]], AcceptChipMsgGiveTurn(otherplayers[mypile[0]]->getId())));
+			if(!playerchoices[0]->Dead())
+				SimMgmt::theEventMgr.postEvent(Event(theEventMgr.clock()+1, this,otherplayers[mypile[0]], AcceptChipMsgGiveTurn(otherplayers[mypile[0]]->getId())));
 		}
 		else
 		{
-			SimMgmt::theEventMgr.postEvent(Event(1, this,playerchoices[0], AcceptChipMsgGiveTurn(playerchoices[0]->getId())));
+			if(!playerchoices[0]->Dead())
+				SimMgmt::theEventMgr.postEvent(Event(theEventMgr.clock()+1, this,playerchoices[0], AcceptChipMsgGiveTurn(playerchoices[0]->getId())));
 			
 		}
 	}

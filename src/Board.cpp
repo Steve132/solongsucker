@@ -68,6 +68,10 @@ void Board::discardChips(const std::multiset<Chip> chips)
 {
 	deadbox.insert(chips.begin(), chips.end());
 }
+void Board::discardChips(const Chip chip)
+{
+	deadbox.insert(chip);
+}
 
 INSERT(Board)
 

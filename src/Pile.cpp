@@ -11,7 +11,17 @@ Pile::~Pile()
 
 INSERT(Pile)
 
-PUT(Pile)
+void Pile::Put()
+{
+	std::ostream& fout = SimMgmt::simOutMgr.getStream();
+	SimMgmt::simOutMgr.pushMargin();
+	for(iterator i = begin(); i != end(); i++)
+	{
+		fout << *i << " ";
+		SimMgmt::simOutMgr.advToMargin();
+	}
+	SimMgmt::simOutMgr.popMargin();
+}
 
 EXTRACT(Pile)
 
