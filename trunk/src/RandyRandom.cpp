@@ -49,15 +49,19 @@ MoveProposal RandyRandom::PerformMove(std::vector<Player*>& p)
 //	if(i == bargains.end() )
 //		board->addChipToPile(id, 0);
 }
-
+int RandyRandom::PickUpPile(std::vector<Chip>& v)
+{
+	return rand() % v.size();
+}
 
 Bargain RandyRandom::CreateBargain()
 {
 	return Bargain();
 }
 
-void RandyRandom::AcceptOrRejectBargain(Bargain* b)
+bool RandyRandom::AcceptOrRejectBargain(Bargain* b)
 {
+	return static_cast<bool>(rand() & 0x1);
 }
 
 EXTRACT(RandyRandom)

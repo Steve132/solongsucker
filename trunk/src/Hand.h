@@ -13,6 +13,7 @@ public:
 	using std::multiset<Chip>::size;
 	using std::multiset<Chip>::begin;
 	using std::multiset<Chip>::find;
+	using std::multiset<Chip>::insert;
 	Hand();
 	Hand(const unsigned Size, const Chip chipId);
 	~Hand();

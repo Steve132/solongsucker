@@ -5,7 +5,10 @@ using namespace AI;
 NancyNice::NancyNice(const unsigned sizeOfHand, const Chip Id, Board* board):Player(sizeOfHand,Id,board)
 {
 }
-
+int NancyNice::PickUpPile(std::vector<Chip>&)
+{
+	return 0;
+}
 MoveProposal NancyNice::PerformMove(std::vector<Player*>&)
 {
 	// Examine bargains in list
@@ -27,7 +30,7 @@ Bargain NancyNice::CreateBargain()
 	return Bargain();
 }
 
-void NancyNice::AcceptOrRejectBargain(Bargain* b)
+bool NancyNice::AcceptOrRejectBargain(Bargain* b)
 {
 }
 

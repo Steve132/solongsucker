@@ -9,9 +9,10 @@ class RandyRandom: public Player
 {
 public:
 	RandyRandom(const unsigned sizeOfHand, const Chip Id, Board* board);
+	virtual int PickUpPile(std::vector<Chip>&);
 	MoveProposal PerformMove(std::vector<Player*>&);
 	Bargain CreateBargain();
-	void AcceptOrRejectBargain(Bargain* b);
+	bool AcceptOrRejectBargain(Bargain* b);
 	virtual void Extract() throw(IOMgmt::TokenError);
 	virtual void Insert();
 };

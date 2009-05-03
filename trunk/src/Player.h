@@ -30,7 +30,8 @@ public:
 	// Pure virtual functions for game functionality to be decided by AIs
 	virtual MoveProposal PerformMove(std::vector<Player*>&) = 0;
 	virtual Bargain CreateBargain() = 0;
-	virtual void AcceptOrRejectBargain(Bargain* b) = 0;
+	virtual bool AcceptOrRejectBargain(Bargain* b) = 0;
+	virtual int PickUpPile(std::vector<Chip>&)=0;
 
 	void TakeTurn();
 	void TakePile(std::list<Pile>::iterator pile);
@@ -51,6 +52,7 @@ public:
 	void doTerminate();
 	
 	Chip getId() const {return id;}
+	bool& Dead() { return dead;}
 
 protected:
 	void executeMove(const MoveProposal& move,std::vector<Player*> &);
@@ -62,6 +64,7 @@ protected:
 	std::list<Bargain> bargains;
 
 	Board* board;
+	bool dead;
 	Hand hand;
 	Chip id;
 	Chip currentturn;
