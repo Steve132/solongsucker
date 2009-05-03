@@ -15,6 +15,11 @@ public:
 	// Permit access to deque functions
 	using std::deque<Chip>::push_back;
 	using std::deque<Chip>::back;
+	using std::deque<Chip>::at;
+	using std::deque<Chip>::begin;
+	using std::deque<Chip>::end;
+	using std::deque<Chip>::size;
+	using std::deque<Chip>::operator[];
 
 	// To fulfill OODataDesign.doc
 	friend std::ostream&  operator<<(std::ostream& fout, Pile& stack);

@@ -1,6 +1,8 @@
 #include "Player.h"
 #include "IOMacros.h"
 #include <sstream>
+#include <iostream>
+#include <algorithm>
 #include "PlayersMsg.h"
 using namespace SimMgmt;
 
@@ -53,7 +55,9 @@ void Player::TakeTurn()
 	ostream& simlog = simOutMgr.getStream();
 	simOutMgr.newLine();
 	simOutMgr.pushMargin();
+	simOutMgr.advToMargin();	
 	simlog << "It is now Player " << id << "'s turn.";
+	simOutMgr.popMargin();
 	
 	std::vector<Player*> playerchoices=otherplayers;
 	MoveProposal mp=PerformMove(playerchoices);
@@ -63,6 +67,8 @@ void Player::TakeTurn()
 void Player::doGiveTurn(const Chip Id)
 {
 	currentturn=Id;
+	if(hand.size()==0)
+		throw 23;
 	if(Id==id)
 		TakeTurn();
 	otherplayers[Id]->Dispatch(otherplayers[Id]->AcceptBargainOffer(CreateBargain()));
@@ -89,7 +95,15 @@ void Player::Dispatch(SimMgmt::Message* msg)
 	{
 		case 1:
 		{
-			doGiveTurn(dynamic_cast<ChipMsg*>(msg)->getChip());
+			try
+			{
+				doGiveTurn(dynamic_cast<ChipMsg*>(msg)->getChip());
+			}
+			catch(int)
+			{
+				//player dead.
+				//give turn back to him
+			}
 			break;
 		}
 		case 2:
@@ -134,6 +148,13 @@ ChipMsg* Player::AcceptChipMsgGiveTurn(Chip c)
 	return new ChipMsg(1,oss.str(),c);
 }
 
+template<class InputIterator, class T>
+  InputIterator myfind ( InputIterator first, InputIterator last, const T& value )
+  {
+    for ( ;first!=last; first++) if ( *first==value ) break;
+    return first;
+  }
+
 void Player::executeMove(const MoveProposal& move,std::vector<Player*>& playerchoices)
 {
 	hand.erase(hand.find(move.getChip()));	
@@ -144,7 +165,34 @@ void Player::executeMove(const MoveProposal& move,std::vector<Player*>& playerch
 	}
 	else
 	{
-		
+		if(board->isPile(move.getPile()))
+		{	
+			Pile& mypile=*move.getPile();
+			for(int i=0;i<playerchoices.size();++i)
+			{
+				std::cout << i << "Y:" << playerchoices[i]->getId() << ':' << mypile.size() << std::endl;
+				bool found=false;
+				for(int j=0;j<mypile.size();j++)
+				{
+					if(mypile[j]==playerchoices[i]->getId())
+					{
+						found=true;
+						break;
+					}
+				}			
+				if(!found)
+				{
+					SimMgmt::theEventMgr.postEvent(Event(1, this,playerchoices[i], AcceptChipMsgGiveTurn(playerchoices[i]->getId())));
+					break;
+				}
+			}
+			SimMgmt::theEventMgr.postEvent(Event(1, this,otherplayers[mypile[0]], AcceptChipMsgGiveTurn(otherplayers[mypile[0]]->getId())));
+		}
+		else
+		{
+			SimMgmt::theEventMgr.postEvent(Event(1, this,playerchoices[0], AcceptChipMsgGiveTurn(playerchoices[0]->getId())));
+			
+		}
 	}
 }
 
