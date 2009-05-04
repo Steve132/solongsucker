@@ -20,6 +20,7 @@ private:
 	int numPlayers;
 	int numChipsPerPlayer;
 	int numEvents;
+	int winningPlayer;
 	int lastEvent;
 	SimMgmt::Agent  **players; //dynamic array of Agent*
 };//Conversation
