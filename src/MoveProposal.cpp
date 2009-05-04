@@ -16,7 +16,9 @@ MoveProposal::~MoveProposal()
 
 INSERT(MoveProposal)
 
-PUT(MoveProposal)
+void MoveProposal::Put()
+{
+}
 
 EXTRACT(MoveProposal)
 
