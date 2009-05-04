@@ -254,8 +254,17 @@ void Player::Put()
 	std::ostream& fout = simOutMgr.getStream();
 	fout << TAG(hand) << " " << hand << " ";
 	fout << TAG(id) << " " << id << " ";
-	for(std::list<Bargain>::iterator i = bargains.begin(); i != bargains.end(); i++)
-		fout << TAG(*i) << " " << *i << " ";
+	fout << TAG(numBargains) << " " << bargains.size() << " ";
+	if(bargains.size() > 0)
+	{
+		simOutMgr.pushMargin();
+		for(std::list<Bargain>::iterator i = bargains.begin(); i != bargains.end(); i++)
+		{
+			fout << *i << " ";
+			simOutMgr.advToMargin();
+		}
+		simOutMgr.popMargin();
+	}
 }
 
 EXTRACT(Player)

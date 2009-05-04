@@ -16,7 +16,19 @@ Bargain::~Bargain()
 
 INSERT(Bargain)
 
-PUT(Bargain)
+void Bargain::Put()
+{
+	std::ostream& fout = SimMgmt::simOutMgr.getStream();
+	fout << TAG(move) << " " << move << " ";
+	fout << TAG(nextTurn) << " " << nextTurn << " ";
+	fout << TAG(numChips) << " " << chips.size() << " ";
+	if(chips.size() > 0)
+	{
+		fout << TAG(chips) << " ";
+		for(std::multiset<Chip>::iterator i = chips.begin(); i != chips.end(); i++)
+			fout << *i << " ";
+	}
+}
 
 EXTRACT(Bargain)
 

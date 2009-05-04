@@ -17,7 +17,11 @@ BargainMsg::~BargainMsg()
 
 INSERT(BargainMsg)
 
-PUT(BargainMsg)
+void BargainMsg::Put()
+{
+	std::ostream& fout = SimMgmt::simOutMgr.getStream();
+	fout << TAG(bargain) << " " << bargain << " ";
+}
 
 EXTRACT(BargainMsg)
 
