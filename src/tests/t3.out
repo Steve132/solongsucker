@@ -1,0 +1,535 @@
+
+PlayersMsg{  agent[ 0 ] = 0
+             agent[ 1 ] = 1
+             agent[ 2 ] = 2
+            
+}PlayersMsg 
+Player 1 rejected a bargain!
+
+
+It is now Player 1's turn.Player 1 rejected a bargain!
+Player 1 rejected a bargain!
+
+SoLongSucker{ numPlayers: 3
+numChipsPerPlayer: 6
+              RandyRandom{ hand: Hand{ 0 0 0 0 0 0 }Hand  id: 0 numBargains: 0 }RandyRandom 
+              JacobJerk{ hand: Hand{ 1 1 1 1 1 }Hand  id: 1 numBargains: 0 }JacobJerk 
+              NancyNice{ hand: Hand{ 2 2 2 2 2 2 }Hand  id: 2 numBargains: 0 }NancyNice 
+              
+}SoLongSucker 
+
+TIME: 1 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 1 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+
+It is now Player 1's turn.Player 1 rejected a bargain!
+
+TIME: 1 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 1 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 2 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+TIME: 2 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+
+It is now Player 1's turn.Player 1 rejected a bargain!
+
+TIME: 2 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 3 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+
+It is now Player 2's turn.Player 2 accepted a bargain!
+
+TIME: 3 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+
+It is now Player 1's turn.Player 1 rejected a bargain!
+
+TIME: 3 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 3 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+
+It is now Player 2's turn.Player 2 accepted a bargain!
+
+TIME: 3 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+
+It is now Player 1's turn.Player 1 rejected a bargain!
+
+TIME: 3 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 4 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+TIME: 4 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+
+It is now Player 1's turn.Player 1 rejected a bargain!
+
+TIME: 4 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 4 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+TIME: 4 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+
+It is now Player 2's turn.Player 2 accepted a bargain!
+
+TIME: 4 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 4 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+TIME: 4 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+
+It is now Player 2's turn.Player 2 accepted a bargain!
+
+TIME: 4 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 4 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+
+It is now Player 2's turn.Player 2 accepted a bargain!
+
+TIME: 4 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+Player 1 has been eliminated.
+
+
+Attempted to give player 1 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 4 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+
+It is now Player 2's turn.Player 2 accepted a bargain!
+
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+
+Attempted to give player 1 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 5 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+Player 2 has been eliminated.
+
+
+Attempted to give player 2 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+
+Attempted to give player 1 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 5 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+
+Attempted to give player 2 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+
+Attempted to give player 1 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 5 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.
+Player 0 picked up pile Pile{ 1 
+                              0 
+                              1 
+                              0 
+                              0 
+                              }Pile 
+Player discarded a Chip of type 0 from the pile.
+Player hand now looks like Hand{ 0 0 0 1 1 }Hand 
+Player 0 rejected a bargain!
+
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+
+Attempted to give player 1 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 5 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+
+Attempted to give player 2 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+
+Attempted to give player 1 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 5 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+
+Attempted to give player 2 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+
+Attempted to give player 1 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 5 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+
+Attempted to give player 2 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+
+Attempted to give player 1 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 5 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 5 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+
+Attempted to give player 2 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+
+Attempted to give player 1 the turn, but player is dead.  Re-Giving turn to 0.
+TIME: 6 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.
+Player 0 picked up pile Pile{ 1 
+                              0 
+                              1 
+                              0 
+                              0 
+                              }Pile 
+Player discarded a Chip of type 0 from the pile.
+Player hand now looks like Hand{ 0 0 1 1 }Hand 
+Player 0 rejected a bargain!
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+TIME: 6 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.
+Player 0 picked up pile Pile{ 2 
+                              1 
+                              2 
+                              0 
+                              0 
+                              }Pile 
+Player discarded a Chip of type 0 from the pile.
+Player hand now looks like Hand{ 0 0 1 2 2 }Hand 
+Player 0 accepted a bargain!
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 rejected a bargain!
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 rejected a bargain!
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 rejected a bargain!
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+Player 0 has been eliminated.
+
+TIME: 6 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+TIME: 6 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 7 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 7 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 1 
+chip: 1}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 7 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 2 
+chip: 2}ChipMsg 
+
+TIME: 7 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+At time: 7, Student: 0 is terminating!
+RandyRandom{ hand: Hand{ }Hand  id: 0 numBargains: 7 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                     Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                     Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                     Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                     Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                     Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                     Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                     }RandyRandom 
+
+At time: 7, Student: 1 is terminating!
+JacobJerk{ hand: Hand{ }Hand  id: 1 numBargains: 5 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   }JacobJerk 
+
+At time: 7, Student: 2 is terminating!
+NancyNice{ hand: Hand{ }Hand  id: 2 numBargains: 7 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   }NancyNice 
+
+SoLongSucker{ numPlayers: 3
+numChipsPerPlayer: 6
+              RandyRandom{ hand: Hand{ }Hand  id: 0 numBargains: 7 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                   }RandyRandom 
+              JacobJerk{ hand: Hand{ }Hand  id: 1 numBargains: 5 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 }JacobJerk 
+              NancyNice{ hand: Hand{ }Hand  id: 2 numBargains: 7 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 }NancyNice 
+              
+}SoLongSucker 
+
+Simulation Statistics:
+Number of events : 92
+Time of Last event : 7
+Total simulation time : 7
+The winning player was Player 0
+

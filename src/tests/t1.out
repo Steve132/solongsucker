@@ -1,0 +1,50 @@
+
+PlayersMsg{  agent[ 0 ] = 0
+            
+}PlayersMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+SoLongSucker{ numPlayers: 1
+numChipsPerPlayer: 2
+              NancyNice{ hand: Hand{ 0 }Hand  id: 0 numBargains: 0 }NancyNice 
+              
+}SoLongSucker 
+
+TIME: 1 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+
+It is now Player 0's turn.Player 0 accepted a bargain!
+
+TIME: 1 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+TIME: 2 SENDER:  RECVR:   ChipMsg{  Handler: 1
+                                    Description: The turn has been given to 0 
+chip: 0}ChipMsg 
+
+Player 0 has been eliminated.
+
+TIME: 2 SENDER:  RECVR:   BargainMsg{ bargain: Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  }BargainMsg 
+
+At time: 2, Student: 0 is terminating!
+NancyNice{ hand: Hand{ }Hand  id: 0 numBargains: 2 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                   }NancyNice 
+
+SoLongSucker{ numPlayers: 1
+numChipsPerPlayer: 2
+              NancyNice{ hand: Hand{ }Hand  id: 0 numBargains: 2 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 Bargain{ move: MoveProposal{ }MoveProposal  nextTurn: 16 numChips: 0 }Bargain  
+                                                                 }NancyNice 
+              
+}SoLongSucker 
+
+Simulation Statistics:
+Number of events : 4
+Time of Last event : 2
+Total simulation time : 2
+The winning player was Player 0
+
