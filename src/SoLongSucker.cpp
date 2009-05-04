@@ -130,7 +130,6 @@ void SoLongSucker::Simulate()
 	string   token;
 	ostream& simlog = simOutMgr.getStream();
 
-
 	while ( theEventMgr.moreEvents() )
 	{
 		//retrive next event and message
@@ -151,6 +150,13 @@ void SoLongSucker::Simulate()
 		// Update statistical data
 		lastEvent = e.getTime();
 		numEvents++;
+		for(int i=0;i<numPlayers;i++)
+		{
+			if(!dynamic_cast<Player*>(players[i])->Dead())
+			{
+				winningPlayer=i;
+			}
+		}
 	}
 	//code to terminate all players
 	for ( int i = 0; i < numPlayers; i++)
@@ -201,6 +207,9 @@ void SoLongSucker::WrapUp()
 
 	simOutMgr.advToMargin();
 	simlog << "Total simulation time : " << theEventMgr.clock();
+	
+	simOutMgr.advToMargin();
+	simlog << "The winning player was Player " << winningPlayer;
 
 	simOutMgr.advToMargin();
 	simOutMgr.popMargin();
